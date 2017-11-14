@@ -32,7 +32,7 @@ app.use(flash());
 // passport.deserializeUser(User.deserializeUser());
 
 app.get("/", function(req, res){
-    res.send("Connected");
+    res.render("landing");
 });
 
 app.listen(3000, function(){
