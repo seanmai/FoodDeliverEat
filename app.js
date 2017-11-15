@@ -35,6 +35,10 @@ app.get("/", function(req, res){
     res.render("landing");
 });
 
+app.get("/order", function(req, res){
+    res.render("order/index");
+});
+
 app.listen(3000, function(){
     console.log("FoodDeliverEat is listening on PORT3000.");
 });
