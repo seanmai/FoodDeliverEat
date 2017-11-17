@@ -5,7 +5,8 @@ var express        = require("express"),
     flash          = require("connect-flash"),
     passport       = require("passport"),
     LocalStrategy  = require("passport-local"),
-    methodOverride = require("method-override");
+    methodOverride = require("method-override"),
+    Food           = require("./models/food");
 
 // Requiring Routes
 // var indexRoutes = ,
@@ -31,12 +32,32 @@ app.use(flash());
 // passport.serializeUser(User.serializeUser());
 // passport.deserializeUser(User.deserializeUser());
 
+// Food.create({
+//     name: "Sandwich",
+//     description: "Homemade sandwich",
+//     image: "https://farm4.staticflickr.com/3111/5721758195_c9efaa9452.jpg",
+//     price: 10.00
+// }, function(err, food){
+//     if(err){
+//         console.log(err);
+//     } else{
+//         console.log(food);
+//     }
+// });
+
+
 app.get("/", function(req, res){
     res.render("landing");
 });
 
 app.get("/order", function(req, res){
-    res.render("order/index");
+    Food.find({}, function(err, foods){
+        if(err){
+            console.log(err);
+        } else{
+            res.render("order/index", {foods: foods});
+        }
+    });
 });
 
 app.listen(3000, function(){
