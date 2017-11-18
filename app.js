@@ -32,6 +32,9 @@ app.use(flash());
 // passport.serializeUser(User.serializeUser());
 // passport.deserializeUser(User.deserializeUser());
 
+app.use("/", indexRoutes);
+app.use("/order", orderRoutes);
+
 // Food.create({
 //     name: "Linguine",
 //     description: "A delicious combo of dry-cured capicollo, mozzarella, mac and cheese, salt chips, and red pepper spread.",
@@ -45,36 +48,6 @@ app.use(flash());
 //         console.log(food);
 //     }
 // });
-
-
-app.get("/", function(req, res){
-    res.render("landing");
-});
-
-app.get("/order", function(req, res){
-    Food.find({}, function(err, foods){
-        var category = [];
-        foods.forEach(function(food){
-            if(notInArray(food.type, category)){
-                category.push(food.type);
-            }
-        });
-        if(err){
-            console.log(err);
-        } else{
-            res.render("order/index", {foods: foods, category: category});
-        }
-    });
-});
-
-function notInArray(item, arr) {
-    for(var i = 0; i < arr.length; i++) {
-        if (arr[i] === item) {
-            return false;
-        }
-    }
-    return true;
-}
 
 app.listen(3000, function(){
     console.log("FoodDeliverEat is listening on PORT3000.");
