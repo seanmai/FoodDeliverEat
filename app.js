@@ -33,10 +33,11 @@ app.use(flash());
 // passport.deserializeUser(User.deserializeUser());
 
 // Food.create({
-//     name: "Sandwich",
-//     description: "Homemade sandwich",
-//     image: "https://farm4.staticflickr.com/3111/5721758195_c9efaa9452.jpg",
-//     price: 10.00
+//     name: "Spaghetti",
+//     description: "A delicious combo of dry-cured capicollo, mozzarella, mac and cheese, salt chips, and red pepper spread.",
+//     image: "https://cdn5.norecipes.com/wp-content/uploads/2012/10/23052346/recipespaghetti-meat-sauce-recipe.1024x1024-1.jpg",
+//     price: 10.00,
+//     type: "Pasta"
 // }, function(err, food){
 //     if(err){
 //         console.log(err);
@@ -52,13 +53,28 @@ app.get("/", function(req, res){
 
 app.get("/order", function(req, res){
     Food.find({}, function(err, foods){
+        var category = [];
+        foods.forEach(function(food){
+            if(notInArray(food.type, category)){
+                category.push(food.type);
+            }
+        });
         if(err){
             console.log(err);
         } else{
-            res.render("order/index", {foods: foods});
+            res.render("order/index", {foods: foods, category: category});
         }
     });
 });
+
+function notInArray(item, arr) {
+    for(var i = 0; i < arr.length; i++) {
+        if (arr[i] === item) {
+            return false;
+        }
+    }
+    return true;
+}
 
 app.listen(3000, function(){
     console.log("FoodDeliverEat is listening on PORT3000.");

@@ -1,9 +1,14 @@
-.thumbnail img {
-    height: 100%;
-    width: 120px;
+.container-fluid {
+    margin: auto 5%;
 }
 
-.row .thumbnail {
+.container-fluid h1 {
+    padding-left: 25px;
+}
+
+.food-item {
+    border: 1px solid #c5c5c5;
     padding: 0;
-    padding-left: 6px;
+    padding-left: 16px;
+    margin: 10px;
 }

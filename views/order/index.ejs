@@ -1,39 +1,28 @@
 <% include ../partials/header %>
 
-<h1>FoodDeliverEat</h1>
-<p>Order now!</p>
-
-<!-- <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-    <% foods.forEach(function(food){ %>
-        <div class="col-md-3 col-sm-6">
-            <div class="thumbnail">
-                <img src="<%= food.image %>">
-                <div class="caption">
+<div class="row container-fluid">
+    <% category.forEach(function(category){ %>
+        <h1><%= category %></h1>
+    <div style="display:flex; flex-wrap: wrap;">
+        <% foods.forEach(function(food){ %>
+            <% if(food.type == category){ %>
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="food-item">
+                        <!-- <div  class="text-right;" style="float: right;">
+                        <img src="<%= food.image %>">
+                    </div> -->
                     <h4><%= food.name %></h4>
+                    <p><%= food.description %></p>
+                    <p>$<%= food.price %>.00</p>
                 </div>
-                <p>
-                    <a href="" class="btn btn-primary">More Info</a>
-                </p>
-            </div>
+            <% } %>
         </div>
-    <% }); %>
-</div> -->
-
-<div class="row container-fluid" style="display:flex; flex-wrap: wrap;">
-    <% foods.forEach(function(food){ %>
-        <div class="col-md-3 col-sm-6">
-            <div class="thumbnail" id="container">
-                <div  class="text-right;" style="float: right;">
-                    <img src="<%= food.image %>">
-                    <!-- <p> test </p> -->
-                </div>
-                <h4><%= food.name %></h6>
-                <p><%= food.description %></p>
-                <p>$<%= food.price %>.00</p>
-            </div>
-        </div>
+        <% }); %>
+    </div>
     <% }); %>
 </div>
+
+
 
 
 <% include ../partials/footer %>
