@@ -9,7 +9,8 @@ var express        = require("express"),
     LocalStrategy  = require("passport-local"),
     methodOverride = require("method-override"),
     MongoStore     = require("connect-mongo")(session),
-    Food           = require("./models/food");
+    Food           = require("./models/food"),
+    User           = require("./models/user");
 
 // Requiring Routes
 var indexRoutes = require("./routes/index"),
@@ -31,11 +32,11 @@ app.use(require("express-session")({
     store: new MongoStore({mongooseConnection: mongoose.connection}),
     cookie: {maxAge: 180 * 60 * 1000} //min * sec * millisec
 }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
