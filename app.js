@@ -24,7 +24,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
 
-// // Passport Configuration
+app.use(cookieParser());
 app.use(require("express-session")({
     secret: "QWER1234",
     resave: false,
@@ -32,6 +32,8 @@ app.use(require("express-session")({
     store: new MongoStore({mongooseConnection: mongoose.connection}),
     cookie: {maxAge: 180 * 60 * 1000} //min * sec * millisec
 }));
+
+// Passport Configuration
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));

@@ -1,7 +1,11 @@
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
+var csrf = require("csurf");
 var User = require("../models/user");
+
+var csrfProtection = csrf();
+router.use(csrfProtection);
 
 // Root route
 router.get("/", function(req, res){
@@ -11,7 +15,7 @@ router.get("/", function(req, res){
 // AUTH //
 //Show register form
 router.get("/register", function(req, res){
-    res.render("register", {page: "register"});
+    res.render("register", {page: "register", csrfToken: req.csrfToken()});
 });
 
 //Handle sign up logic
