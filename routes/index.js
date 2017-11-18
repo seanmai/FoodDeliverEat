@@ -24,7 +24,7 @@ router.post("/register", function(req, res){
         }
         passport.authenticate("local")(req, res, function(){
             req.flash("success", "Welcome to FoodDeliverEat " + user.username);
-            res.redirect("/campgrounds");
+            res.redirect("/order");
         })
     })
 });
@@ -36,9 +36,17 @@ router.get("/login", function(req, res){
 
 //Handles login logic using passport middleware
 router.post("/login", passport.authenticate("local", {
-    successRedirect: "/campgrounds",
+    successRedirect: "/order",
     failureRedirect: "/login"
     }), function(req, res){
+});
+
+
+//Logout route
+router.get("/logout", function(req, res){
+    req.logout();
+    req.flash("success", "Logged out");
+    res.redirect("/order");
 });
 
 module.exports = router;

@@ -9,4 +9,12 @@ middlewareObj.notInArray = function(item, arr) {
     return true;
 }
 
+middlewareObj.isLoggedIn = function(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    req.flash("error", "You must log in to continue.");
+    res.redirect("/login");
+}
+
 module.exports = middlewareObj;
