@@ -1,4 +1,5 @@
 var express        = require("express"),
+    cookieParser   = require("cookie-parser"),
     app            = express(),
     bodyParser     = require("body-parser"),
     mongoose       = require("mongoose"),
@@ -9,8 +10,8 @@ var express        = require("express"),
     Food           = require("./models/food");
 
 // Requiring Routes
-// var indexRoutes = ,
-//     foodRoutes = ,
+var indexRoutes = require("./routes/index"),
+    orderRoutes = require("./routes/order");
 
 mongoose.connect("mongodb://localhost/fooddelivereat", {useMongoClient: true});
 mongoose.Promise = global.Promise;
@@ -21,11 +22,11 @@ app.use(methodOverride("_method"));
 app.use(flash());
 
 // // Passport Configuration
-// app.use(require("express-session")({
-//     secret: "ASDF312213",
-//     resave: false,
-//     saveUninitialized: false
-// }));
+app.use(require("express-session")({
+    secret: "QWER1234",
+    resave: false,
+    saveUninitialized: false
+}));
 // app.use(passport.initialize());
 // app.use(passport.session());
 // passport.use(new LocalStrategy(User.authenticate()));
