@@ -33,11 +33,11 @@ app.use(flash());
 // passport.deserializeUser(User.deserializeUser());
 
 // Food.create({
-//     name: "Spaghetti",
+//     name: "Linguine",
 //     description: "A delicious combo of dry-cured capicollo, mozzarella, mac and cheese, salt chips, and red pepper spread.",
-//     image: "https://cdn5.norecipes.com/wp-content/uploads/2012/10/23052346/recipespaghetti-meat-sauce-recipe.1024x1024-1.jpg",
+//     image: "http://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/8/4/1/IG0511_linguine-with-shrimp-scampi_s4x3.jpg.rend.hgtvcom.616.462.suffix/1384540894943.jpeg",
 //     price: 10.00,
-//     type: "Pasta"
+//     type: "Sandwich"
 // }, function(err, food){
 //     if(err){
 //         console.log(err);

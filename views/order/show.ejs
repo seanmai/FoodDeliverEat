@@ -1,3 +1,11 @@
 <% include ../partials/header %>
-    
+<div class="col-md-9">
+    <div class="thumbnail">
+        <img class="img-responsive" src="<%= food.image %>">
+        <div class="caption-full">
+            <h4 class="pull-right">$<%= food.price %>.00t</h4>
+            <h4><a><%=food.name%></a></h4>
+        </div>
+    </div>
+</div>
 <% include ../partials/footer %>
