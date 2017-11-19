@@ -10,7 +10,7 @@ router.use(csrfProtection);
 // AUTH //
 //Show register form
 router.get("/register", function(req, res){
-    res.render("users/register", {page: "register", csrfToken: req.csrfToken()});
+    res.render("user/register", {page: "register", csrfToken: req.csrfToken()});
 });
 
 //Handle sign up logic
@@ -25,7 +25,7 @@ router.post("/register", function(req, res){
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             req.flash("error", err.message);
-            return res.redirect("/register");
+            return res.redirect("/user/register");
         }
         passport.authenticate("local")(req, res, function(){
             req.flash("success", "Welcome to FoodDeliverEat " + user.username);
@@ -36,13 +36,13 @@ router.post("/register", function(req, res){
 
 //Show login form
 router.get("/login", function(req, res){
-    res.render("users/login", {page: "login", csrfToken: req.csrfToken()});
+    res.render("user/login", {page: "login", csrfToken: req.csrfToken()});
 });
 
 //Handles login logic using passport middleware
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/order",
-    failureRedirect: "/login",
+    failureRedirect: "/user/login",
     failureFlash: true
     }), function(req, res){
 });
@@ -50,7 +50,7 @@ router.post("/login", passport.authenticate("local", {
 //Logout route
 router.get("/logout", function(req, res){
     req.logout();
-    req.flash("success", "Logged out");
+    req.flash("success", "Signed out");
     res.redirect("/order");
 });
 
@@ -59,9 +59,9 @@ router.get("/:id", function(req, res){
     User.findById(req.params.id, function(err, foundUser){
         if(err){
             req.flash("error", err.message);
-            return res.redirect("/orders");
+            return res.redirect("/order");
         }
-        res.render("users/show", {user: foundUser});
+        res.render("user/profile", {user: foundUser});
     });
 });
 
