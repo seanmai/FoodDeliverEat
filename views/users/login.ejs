@@ -1,7 +1,7 @@
 <% include ../partials/header %>
 
 <div class="row">
-    <h1 style="text-align: center">Login</h1>
+    <h1 style="text-align: center">Sign In</h1>
     <div style="width: 30%; margin: 25px auto;">
         <form action="/user/login" method="post">
             <div class="form-group">
@@ -15,10 +15,13 @@
             </div>
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block">Login</button>
+                <button class="btn btn-lg btn-primary btn-block">Log In</button>
             </div>
         </form>
-        <a href="/order">Go Back</a>
+        <div class="text-center">
+            <p>New to FoodDeliverEat?</p>
+            <a href="/user/register" class="btn btn-success">Create your FoodDeliverEat Account</a>
+        </div>
     </div>
 </div>
 
