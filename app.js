@@ -14,7 +14,8 @@ var express        = require("express"),
 
 // Requiring Routes
 var indexRoutes = require("./routes/index"),
-    orderRoutes = require("./routes/order");
+    orderRoutes = require("./routes/order"),
+    userRoutes = require("./routes/user");
 
 mongoose.connect("mongodb://localhost/fooddelivereat", {useMongoClient: true});
 mongoose.Promise = global.Promise;
@@ -50,6 +51,7 @@ app.use(function(req, res, next){
 
 app.use("/", indexRoutes);
 app.use("/order", orderRoutes);
+app.use("/user", userRoutes);
 
 // Food.create({
 //     name: "Linguine",
