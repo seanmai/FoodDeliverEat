@@ -1,3 +1,6 @@
+.navbar .container-fluid {
+    padding: 0 40px;
+}
 .container-fluid {
     margin: auto 5%;
 }

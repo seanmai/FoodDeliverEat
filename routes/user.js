@@ -10,7 +10,7 @@ router.use(csrfProtection);
 // AUTH //
 //Show register form
 router.get("/register", function(req, res){
-    res.render("register", {page: "register", csrfToken: req.csrfToken()});
+    res.render("users/register", {page: "register", csrfToken: req.csrfToken()});
 });
 
 //Handle sign up logic
