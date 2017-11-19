@@ -16,12 +16,13 @@ router.get("/register", function(req, res){
 //Handle sign up logic
 router.post("/register", function(req, res){
     var newUser = new User({
+        username: req.body.username,
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         phoneNumber: req.body.phoneNumber
     });
-    User.register(new User(newUser, req.body.password, function(err, user){
+    User.register(newUser, req.body.password, function(err, user){
         if(err){
             req.flash("error", err.message);
             return res.redirect("/register");
@@ -29,8 +30,8 @@ router.post("/register", function(req, res){
         passport.authenticate("local")(req, res, function(){
             req.flash("success", "Welcome to FoodDeliverEat " + user.username);
             res.redirect("/order");
-        });
-    }));
+        })
+    })
 });
 
 //Show login form
