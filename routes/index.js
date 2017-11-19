@@ -20,7 +20,7 @@ router.get("/register", function(req, res){
 
 //Handle sign up logic
 router.post("/register", function(req, res){
-    User.register({email : req.body.email}), req.body.password, function(err, user){
+    User.register(new User({email : req.body.email}), req.body.password, function(err, user){
         if(err){
             req.flash("error", err.message);
             return res.redirect("/register");
@@ -28,19 +28,20 @@ router.post("/register", function(req, res){
         passport.authenticate("local")(req, res, function(){
             req.flash("success", "Welcome to FoodDeliverEat " + user.username);
             res.redirect("/order");
-        })
-    })
+        });
+    });
 });
 
 //Show login form
 router.get("/login", function(req, res){
-    res.render("login", {page: "login"});
+    res.render("login", {page: "login", csrfToken: req.csrfToken()});
 });
 
 //Handles login logic using passport middleware
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/order",
-    failureRedirect: "/login"
+    failureRedirect: "/login",
+    failureFlash: true
     }), function(req, res){
 });
 

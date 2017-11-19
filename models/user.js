@@ -2,20 +2,14 @@ var mongoose = require("mongoose");
 passportLocalMongooseEmail = require('passport-local-mongoose-email');
 
 var UserSchema = new mongoose.Schema({
-    email: {type: String, required: true},
-    password: {type: String, required: true},
+    email: {type: String, required: false},
+    password: {type: String, required: false},
     name: {
-        first: {type: String, required: true},
-        last:  {type: String, required: true}}
+        first: {type: String, required: false},
+        last:  {type: String, required: false}}
 });
 
-// UserSchema.methods.encrypPassword = function(password){
-//     return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null);
-// };
-//
-// UserSchema.methods.validPassword = function(password){
-//     return bcrypt.compareSync(password, this.password);
-// }
-
-UserSchema.plugin(passportLocalMongoose);
+UserSchema.plugin(passportLocalMongooseEmail, {
+    usernameField: 'email',
+});
 module.exports = mongoose.model("User", UserSchema);

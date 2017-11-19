@@ -27,13 +27,21 @@ router.get("/add-to-cart/:id", function(req, res, next){
     Food.findById(foodId, function(err, food){
         if(err){
             console.log(err);
-            return res.redirect("/");
+            return res.redirect("/order");
         }
         cart.add(food, food.id);
         req.session.cart = cart;
         console.log(req.session.cart);
-        res.redirect("/");
+        res.redirect("/order");
     });
 });
+
+router.get("/checkout", function(req, res){
+    if(!req.session.cart){
+        return res.render("order/checkout", {foods: null});
+    }
+    var cart = new Cart(req.session.cart);
+    res.render("order/checkout", {foods: cart.generateArray(), totalPrice: cart.totalPrice});
+})
 
 module.exports = router;
