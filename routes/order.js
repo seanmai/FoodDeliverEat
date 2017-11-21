@@ -20,7 +20,7 @@ router.get("/", function(req, res){
     });
 });
 
-router.get("/add-to-cart/:id", function(req, res, next){
+router.get("/add-to-cart/:id", function(req, res){
     var foodId = req.params.id;
     // If there was already a created cart then pass it, otherwise pass in empty object for new cart
     var cart = new Cart(req.session.cart ? req.session.cart : {});
@@ -34,6 +34,23 @@ router.get("/add-to-cart/:id", function(req, res, next){
         console.log(req.session.cart);
         res.redirect("/order");
     });
+});
+
+router.get("/cart-quantity/:id", function(req, res){
+    var productId = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {});
+    var quantity = req.body.qty;
+    cart.reduceByOne(id, );
+    req.session.cart = cart;
+    res.redirect("/checkout");
+});
+
+router.get("/cart-remove/:id", function(req, res){
+    var productId = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {});
+    cart.removeItem(productId);
+    req.session.cart = cart;
+    res.redirect("/order/checkout");
 });
 
 router.get("/checkout", function(req, res){

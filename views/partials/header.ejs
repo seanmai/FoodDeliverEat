@@ -40,7 +40,7 @@
                         <li>
                             <a href="/order/checkout">
                                 <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                                <% if(session.cart){ %>
+                                <% if(session.cart && session.cart.totalQty > 0){ %>
                                     <span class="badge"><%= session.cart.totalQty %></span>
                                 <% } %>
                             </a>
