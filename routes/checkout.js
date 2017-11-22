@@ -34,7 +34,7 @@ router.get("/cart-remove/:id", function(req, res){
     var cart = new Cart(req.session.cart ? req.session.cart : {});
     cart.removeItem(productId);
     req.session.cart = cart;
-    res.redirect("/order/checkout");
+    res.redirect("/checkout");
 });
 
 router.get("/", function(req, res){
