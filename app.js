@@ -55,19 +55,6 @@ app.use("/order", orderRoutes);
 app.use("/user", userRoutes);
 app.use("/checkout", checkoutRoutes);
 
-// Food.create({
-//     name: "Linguine",
-//     description: "A delicious combo of dry-cured capicollo, mozzarella, mac and cheese, salt chips, and red pepper spread.",
-//     image: "http://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/8/4/1/IG0511_linguine-with-shrimp-scampi_s4x3.jpg.rend.hgtvcom.616.462.suffix/1384540894943.jpeg",
-//     price: 10.00,
-//     type: "Sandwich"
-// }, function(err, food){
-//     if(err){
-//         console.log(err);
-//     } else{
-//         console.log(food);
-//     }
-// });
 
 app.listen(3000, function(){
     console.log("FoodDeliverEat is listening on PORT3000.");
