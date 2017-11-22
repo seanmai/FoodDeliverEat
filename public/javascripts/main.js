@@ -8,7 +8,6 @@
 // js for sticking category navbar
 $(document).ready(function(){
     var navOffset = ($(".navbar-stick").offset().top)-($(".navbar-header").outerHeight());
-    alert(navOffset);
 
     $(".navbar-stick").wrap('<div class="nav-placeholder"></div>');
     $(".nav-placeholder").height($(".navbar-stick").outerHeight());
