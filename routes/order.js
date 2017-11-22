@@ -20,6 +20,17 @@ router.get("/", function(req, res){
     });
 });
 
+router.get("/:id", function(req, res){
+    Food.findById(req.params.id).exec(function(err, foodItem){
+        if(err){
+            console.log(err);
+            res.redirect("/order");
+        } else {
+            res.render("order/show", {food: foodItem})
+        }
+    })
+})
+
 router.get("/add-to-cart/:id", function(req, res){
     var foodId = req.params.id;
     // If there was already a created cart then pass it, otherwise pass in empty object for new cart
