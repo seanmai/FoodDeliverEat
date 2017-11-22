@@ -1,19 +1,19 @@
 var mongoose = require("mongoose");
-var Food = require("../models/food");
+var Food = require("./models/food");
 var data = [
     {
-        name: "Clubbin Sub",
-        description: "A contemporary twist on the classic club with a delicious blend of bacon, turkey, lettuce, tomatoes, cheddar, garlic aioli, and spicy mayo.",
-        image: "http://img.taste.com.au/OX2Wle32/taste/2016/11/marinated-chicken-club-sandwich-1970-1.jpeg",
-        price: "10",
-        type: "Sandiwch",
+        name: "Chicken Tenders",
+        description: "Classic Chicken Tenders served with our classic plum sauce and a side of fries",
+        image: "https://images-gmi-pmc.edge-generalmills.com/8b648fc0-1cf6-46f2-b923-a48d16923eb9.jpg",
+        price: "12",
+        type: "Snack",
     },
     {
         name: "Grilled Cheese",
         description: "A delicious combo of dry-cured capicollo, mozzarella, cheddar cheese, salt chips, and red pepper spread.",
         image: "https://atmedia.imgix.net/c3a8c1079c6970caf7188768531f20699d22f0d7?auto=format&q=45&w=600.0&h=800.0&fit=max&cs=strip",
         price: "10",
-        type: Sandiwch"",
+        type: "Sandwich",
     },
     {
         name: "Spaghetti",
@@ -30,11 +30,11 @@ var data = [
         type: "Pasta",
     },
     {
-        name: "Chicken Tenders",
-        description: "Classic Chicken Tenders served with our classic plum sauce and a side of fries",
-        image: "https://images-gmi-pmc.edge-generalmills.com/8b648fc0-1cf6-46f2-b923-a48d16923eb9.jpg",
-        price: "12",
-        type: "Snack",
+        name: "Clubbin Sub",
+        description: "A contemporary twist on the classic club with a delicious blend of bacon, turkey, lettuce, tomatoes, cheddar, garlic aioli, and spicy mayo.",
+        image: "http://img.taste.com.au/OX2Wle32/taste/2016/11/marinated-chicken-club-sandwich-1970-1.jpeg",
+        price: "10",
+        type: "Sandwich",
     },
     {
         name: "Surfside Salad",
@@ -170,3 +170,24 @@ var data = [
         type: "Sandwich",
     }
 ];
+
+function seedDB(){
+    Food.remove({}, function(err){
+        if(err){
+            console.log(err);
+        } else {
+            console.log("Removed all food items.");
+            data.forEach(function(seed){
+                Food.create(seed, function(err, food){
+                    if(err){
+                        console.log(err);
+                    } else {
+                        console.log("Added a food item.")
+                    }
+                });
+            });
+        }
+    });
+}
+
+module.exports = seedDB;
