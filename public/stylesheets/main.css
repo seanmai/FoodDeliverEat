@@ -15,3 +15,11 @@
     padding-left: 16px;
     margin: 10px;
 }
+
+.navbar-fixed {
+    top: 50px;
+}
+
+/*.nav-placeholder {
+    margin: 0 0 40px 0;
+}*/
