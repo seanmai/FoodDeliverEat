@@ -7,7 +7,12 @@
 
 // js for sticking category navbar
 $(document).ready(function(){
-    var navOffset = ($(".navbar-stick").offset().top)-($(".navbar-header").outerHeight());
+    fixNav();
+    setBindings();
+});
+
+function fixNav(){
+    var navOffset = ($(".navbar-stick").offset().top)-($(".navbar-default").outerHeight());
 
     $(".navbar-stick").wrap('<div class="nav-placeholder"></div>');
     $(".nav-placeholder").height($(".navbar-stick").outerHeight());
@@ -20,6 +25,15 @@ $(document).ready(function(){
          } else {
              $(".navbar-stick").removeClass(" navbar-fixed-top navbar-fixed");
          }
-
     });
-});
+}
+
+function setBindings(){
+    $(".food-category").click(function(e){
+        e.preventDefault();
+        var sectionId = e.currentTarget.id + "Section";
+        $("html, body").animate({
+            scrollTop: ($("#" + sectionId).offset().top)-2*($(".navbar-default").outerHeight())
+        }, 500);
+    });
+};

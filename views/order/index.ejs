@@ -11,7 +11,7 @@
                     <div class="collapse navbar-collapse" style="padding: 0;">
                         <ul class="nav navbar-nav">
                             <% category.forEach(function(category){ %>
-                                <li class="food-category"><a href="#"><%= category %></a></li>
+                                <li class="food-category" id="<%= category.toLowerCase(); %>"><a href="#<%= category.toLowerCase(); %>Section"><%= category %></a></li>
                             <% }); %>
                         </ul>
                 </div>
@@ -19,7 +19,7 @@
         </div>
         <div class="row container-fluid">
             <% category.forEach(function(category){ %>
-                <h1><%= category %></h1>
+                <h1 id="<%= category.toLowerCase(); %>Section"><%= category %></h1>
                 <div style="display:flex; flex-wrap: wrap;">
                     <% foods.forEach(function(food){ %>
                         <% if(food.type == category){ %>
