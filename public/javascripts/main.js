@@ -5,12 +5,13 @@
 //     }
 // });​
 
-// js for sticking category navbar
+
 $(document).ready(function(){
     fixNav();
     setBindings();
 });
 
+// Sticking category navbar
 function fixNav(){
     var navOffset = ($(".navbar-stick").offset().top)-($(".navbar-default").outerHeight());
 
@@ -23,15 +24,16 @@ function fixNav(){
          if(scrollPos >= navOffset){
              $(".navbar-stick").addClass("navbar-fixed-top navbar-fixed");
          } else {
-             $(".navbar-stick").removeClass(" navbar-fixed-top navbar-fixed");
+             $(".navbar-stick").removeClass("navbar-fixed-top navbar-fixed");
          }
     });
 }
 
+// Adding scroll anchors
 function setBindings(){
-    $(".food-category").click(function(e){
-        e.preventDefault();
-        var sectionId = e.currentTarget.id + "Section";
+    $(".food-category").click(function(event){
+        event.preventDefault();
+        var sectionId = event.currentTarget.id + "Section";
         $("html, body").animate({
             scrollTop: ($("#" + sectionId).offset().top)-2*($(".navbar-default").outerHeight())
         }, 500);

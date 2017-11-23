@@ -18,6 +18,7 @@
 
 .navbar-fixed {
     top: 51px;
+    z-index: 10;
 }
 
 #content {
