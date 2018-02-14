@@ -2,8 +2,14 @@
 
 <!-- The foods that was passed in is the generated array from carts object -->
 <% if(foods && session.cart.totalQty > 0){ %>
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+    <div class="base">
+        <div class="backgroundContainer col-md-12">
+
+        </div>
+        <div class="addressContainer col-md-4">
+            <p>Hello</p>
+        </div>
+        <div class="orderContainer col-md-4">
             <ul class="list-group">
                 <% foods.forEach(function(food){ %>
                     <li class="list-group-item">
@@ -25,19 +31,11 @@
 
                         </div>
                     </li>
-                <% }); %>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <strong>Total: <%= totalPrice %></strong>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <a href="/checkout" type="button" class="btn btn-success">Checkout</a>
+                    <% }); %>
+                </ul>
+                <strong>Total: <%= totalPrice %></strong>
+                <hr>
+                <a href="/checkout" type="button" class="btn btn-success">Place order</a>
         </div>
     </div>
 <% } else { %>

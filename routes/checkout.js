@@ -45,4 +45,8 @@ router.get("/", function(req, res){
     res.render("order/checkout", {foods: cart.generateArray(), totalPrice: cart.totalPrice});
 })
 
+router.post("/", function(req, res){
+    
+})
+
 module.exports = router;
