@@ -10,6 +10,8 @@ var orderSchema = new mongoose.Schema({
     }
     name: {type: String, required: true},
     cart: {type: Object, required: true},
+    lat: Number,
+    lng: Number,
     deliveryTime: {type: Date, required: true},
     payment: {type: String, required: true},
     instructions: String,
