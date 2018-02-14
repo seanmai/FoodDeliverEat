@@ -7,8 +7,9 @@ var orderSchema = new mongoose.Schema({
             ref: "User"
         },
         username: String
-    }
+    },
     name: {type: String, required: true},
+    phone: {type: Number, required: true},
     cart: {type: Object, required: true},
     lat: Number,
     lng: Number,
@@ -16,4 +17,4 @@ var orderSchema = new mongoose.Schema({
     payment: {type: String, required: true},
     instructions: String,
 });
-module.exports = mongoose.model("Order", foodSchema);
+module.exports = mongoose.model("Order", orderSchema);

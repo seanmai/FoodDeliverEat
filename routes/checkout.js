@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var Food = require("../models/food");
 var Cart = require("../models/cart");
+var Order = require("../models/order");
 var middleware = require("../middleware");
 
 router.get("/add-to-cart/:id", function(req, res){
@@ -50,19 +51,24 @@ router.post("/", function(req, res){
         return res.redirect("/checkout");
     }
     var cart = new Cart(req.session.cart);
-    var user = {
-        id: req.user._id,
-        username: req.user.username
-    };
+    if(!req.user){
+        var user = {};
+    } else {
+        var user = {
+            id: req.user._id,
+            username: req.user.username
+        };
+    }
     var order = new Order({
         user: user,
         name: req.body.name,
+        phone: req.body.phone,
         cart: cart,
         deliveryTime: Date.now(),
         payment: req.body.paymentOption,
         instructions: req.body.note
     });
-    Order.create(req.body.order, function(err, order){
+    Order.create(order, function(err, order){
         if(err){
             req.flash("error", err.message);
             return res.redirect("back");
@@ -70,6 +76,7 @@ router.post("/", function(req, res){
         req.flash("success", "Sit tight, your order is on the way!");
         res.redirect("/")
     })
+    console.log(order);
 });
 
 module.exports = router;
