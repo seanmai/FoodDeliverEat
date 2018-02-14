@@ -6,8 +6,31 @@
         <div class="backgroundContainer col-md-12">
 
         </div>
+        <form class="" action="/checkout" method="POST">
         <div class="addressContainer col-md-4">
-            <p>Hello</p>
+            <h3>Delivery Info</h4>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" name="name" id="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="name">Delivery Time</label>
+                <div class="">
+                    <input class="" type="radio" name="deliveryTime" id="deliveryTime"> As soon as possible <!--(<%= %>)-->
+                    <a href="" style="float: right">Schedule</a>
+                </div>
+            </div>
+            <h4>Payment Info</h4>
+            <div class="form-group">
+                <select class="" name="paymentOption" id="paymentOption">
+                    <option value="cash">Cash</option>
+                    <option value="credit">Credit Card</option>
+                    <option value="debit">Debit Card</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="note" id="note" placeholder="Add delivery instructions">
+            </div>
         </div>
         <div class="orderContainer col-md-4">
             <ul class="list-group">
@@ -37,6 +60,7 @@
                 <hr>
                 <a href="/checkout" type="button" class="btn btn-success">Place order</a>
         </div>
+    </form>
     </div>
 <% } else { %>
     <div class="row">
