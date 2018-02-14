@@ -1,6 +1,13 @@
 var mongoose = require("mongoose");
 
 var foodSchema = new mongoose.Schema({
+    user: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username: String
+    }
     name: {type: String, required: true},
     cart: {type: Object, required: true},
     deliveryTime: {type: Date, required: true},
