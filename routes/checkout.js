@@ -43,10 +43,33 @@ router.get("/", function(req, res){
     }
     var cart = new Cart(req.session.cart);
     res.render("order/checkout", {foods: cart.generateArray(), totalPrice: cart.totalPrice});
-})
+});
 
 router.post("/", function(req, res){
-    
-})
+    if(!req.session.cart){
+        return res.redirect("/checkout");
+    }
+    var cart = new Cart(req.session.cart);
+    var user = {
+        id: req.user._id,
+        username: req.user.username
+    };
+    var order = new Order({
+        user: user,
+        name: req.body.name,
+        cart: cart,
+        deliveryTime: Date.now(),
+        payment: req.body.paymentOption,
+        instructions: req.body.note
+    });
+    Order.create(req.body.order, function(err, order){
+        if(err){
+            req.flash("error", err.message);
+            return res.redirect("back");
+        }
+        req.flash("success", "Sit tight, your order is on the way!");
+        res.redirect("/")
+    })
+});
 
 module.exports = router;
