@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-var foodSchema = new mongoose.Schema({
+var orderSchema = new mongoose.Schema({
     user: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
