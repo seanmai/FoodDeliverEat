@@ -35,9 +35,7 @@
                 <div class="form-group">
                     <input class="form-control" type="text" name="note" id="note" placeholder="Add delivery instructions">
                 </div>
-                <button type="submit" class="btn btn-success">Place Order</button>
             </div>
-        </form>
             <div class="orderContainer col-md-4">
                 <ul class="list-group">
                     <% foods.forEach(function(food){ %>
@@ -64,7 +62,9 @@
                     </ul>
                     <strong>Total: <%= totalPrice %></strong>
                     <hr>
+                    <button type="submit" class="btn btn-success">Place Order</button>
             </div>
+        </form>
     </div>
 <% } else { %>
     <div class="row">

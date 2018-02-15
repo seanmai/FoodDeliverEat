@@ -12,12 +12,12 @@ router.get("/add-to-cart/:id", function(req, res){
     Food.findById(foodId, function(err, food){
         if(err){
             console.log(err);
-            return res.redirect("/order");
+            return res.redirect("/menu");
         }
         cart.add(food, food.id);
         req.session.cart = cart;
         console.log(req.session.cart);
-        res.redirect("/order");
+        res.redirect("/menu");
     });
 });
 
@@ -40,10 +40,10 @@ router.get("/cart-remove/:id", function(req, res){
 
 router.get("/", function(req, res){
     if(!req.session.cart){
-        return res.render("order/checkout", {foods: null});
+        return res.render("menu/checkout", {foods: null});
     }
     var cart = new Cart(req.session.cart);
-    res.render("order/checkout", {foods: cart.generateArray(), totalPrice: cart.totalPrice});
+    res.render("menu/checkout", {foods: cart.generateArray(), totalPrice: cart.totalPrice});
 });
 
 router.post("/", function(req, res){

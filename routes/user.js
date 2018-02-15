@@ -29,7 +29,7 @@ router.post("/register", function(req, res){
         }
         passport.authenticate("local")(req, res, function(){
             req.flash("success", "Welcome to FoodDeliverEat " + user.username);
-            res.redirect("/order");
+            res.redirect("/menu");
         })
     })
 });
@@ -41,7 +41,7 @@ router.get("/login", function(req, res){
 
 //Handles login logic using passport middleware
 router.post("/login", passport.authenticate("local", {
-    successRedirect: "/order",
+    successRedirect: "/menu",
     failureRedirect: "/user/login",
     failureFlash: true
     }), function(req, res){
@@ -51,7 +51,7 @@ router.post("/login", passport.authenticate("local", {
 router.get("/logout", function(req, res){
     req.logout();
     req.flash("success", "Signed out");
-    res.redirect("/order");
+    res.redirect("/menu");
 });
 
 //User Profile
@@ -59,7 +59,7 @@ router.get("/:id", function(req, res){
     User.findById(req.params.id, function(err, foundUser){
         if(err){
             req.flash("error", err.message);
-            return res.redirect("/order");
+            return res.redirect("/menu");
         }
         res.render("user/profile", {user: foundUser});
     });
