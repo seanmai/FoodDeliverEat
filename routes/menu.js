@@ -16,7 +16,7 @@ router.get("/", function(req, res){
         if(err){
             console.log(err);
         } else{
-            res.render("order/index", {foods: foods, category: category});
+            res.render("menu/index", {foods: foods, category: category});
         }
     });
 });
@@ -25,15 +25,21 @@ router.get("/:id", function(req, res){
     Food.findById(req.params.id).exec(function(err, foodItem){
         if(err){
             console.log(err);
-            res.redirect("/order");
+            res.redirect("/menu");
         } else {
-            res.render("order/show", {food: foodItem});
+            res.render("menu/show", {food: foodItem});
         }
     });
 });
 
-router.get("/view-orders", function(req, res){
-
+router.get("/orders", function(req, res){
+    Order.find({}, function(err, orders){
+        if(err){
+            console.log(err)
+        } else {
+            res.render("menu/orders", {orders: orders})
+        }
+    })
 });
 
 module.exports = router;

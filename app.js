@@ -15,7 +15,8 @@ var express        = require("express"),
 
 // Requiring Routes
 var indexRoutes = require("./routes/index"),
-    orderRoutes = require("./routes/order"),
+    menuRoutes = require("./routes/menu"),
+    ordersRoutes = require("./routes/orders"),
     userRoutes = require("./routes/user"),
     checkoutRoutes = require("./routes/checkout");
 
@@ -53,7 +54,8 @@ app.use(function(req, res, next){
 });
 
 app.use("/", indexRoutes);
-app.use("/order", orderRoutes);
+app.use("/menu", menuRoutes);
+app.use("/orders", ordersRoutes);
 app.use("/user", userRoutes);
 app.use("/checkout", checkoutRoutes);
 
