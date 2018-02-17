@@ -73,6 +73,7 @@ router.post("/", function(req, res){
             req.flash("error", err.message);
             return res.redirect("back");
         }
+        req.session.cart = {};
         req.flash("success", "Sit tight, your order is on the way!");
         res.redirect("/")
     })
