@@ -24,12 +24,12 @@
                     <% foods.forEach(function(food){ %>
                         <% if(food.type == category){ %>
                             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="food-item">
+                                <div class="food-item" id="<%= food.name %>">
                                         <!-- <div  class="text-right;" style="float: right;">
                                         <img src="<%= food.image %>">
                                     </div> -->
                                     <h4><%= food.name %></h4>
-                                    <p><%= food.description %></p>
+                                    <p><%- food.description.length > 163 ? food.description.substring(0, 160) + "..." : food.description %></p>
                                     <p>$<%= food.price %>.00</p>
                                     <a href="/checkout/add-to-cart/<%= food._id %>" class="btn btn-xs btn-success">Add to cart</a>
                                     <a href="/menu/<%= food._id %>" class="btn btn-xs btn-success">Info</a>
@@ -51,3 +51,10 @@
 <!-- Create a modal template
 use jquery to add html elements to modal template
 Make ID for each food that equals object's id. Then use EJS to access object's attributes  -->
+
+
+
+<!-- For menu create/destroy/edit: Use similar display as index page
+Have a + icon by each food category
+    Each category has an ID that is the category name
+    When pressed, creates a form. Food item's type is automatically set to the category -->

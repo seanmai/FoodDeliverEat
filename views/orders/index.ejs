@@ -11,25 +11,10 @@
                         <p><%= order.cart.items[id].item.name %></p>
                     <% } %>
                 </div>
+                <a href="https://www.google.com/maps/?q=<%= order.lat %>, <%= order.lng %>" target="_blank" class="btn btn-lg btn-success"></a>
             </div>
-            <a href="https://www.google.com/maps/?q=<%= order.lat %>, <%= order.lng %>" class="btn btn-lg btn-success"></a>
         <% }); %>
     </div>
 </div>
 
-<script>
-    nav = navigator.geolocation;
-    nav.getCurrentPosition(success, failure);
-
-    function success(position){
-        var lat = position.coords.latitude;
-        var lng = position.coords.longitude;
-        alert(lat);
-        alert(lng);
-    }
-
-    function failure(){
-        alert("Could not get location.");
-    }
-</script>
 <% include ../partials/footer %>
