@@ -17,6 +17,3 @@ router.get("/", function(req, res){
 });
 
 module.exports = router;
-
-// for items in orders.cart.items(print items)
-// var arr = cart[0].generate array
