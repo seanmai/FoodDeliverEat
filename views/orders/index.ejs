@@ -10,10 +10,9 @@
                     <% for(var id in order.cart.items){ %>
                         <p><%= order.cart.items[id].item.name %></p>
                     <% } %>
-
                 </div>
-
             </div>
+            <a href="https://www.google.com/maps/?q=<%= order.lat %>, <%= order.lng %>" class="btn btn-lg btn-success"></a>
         <% }); %>
     </div>
 </div>
