@@ -18,4 +18,19 @@
     </div>
 </div>
 
+<script>
+    nav = navigator.geolocation;
+    nav.getCurrentPosition(success, failure);
+
+    function success(position){
+        var lat = position.coords.latitude;
+        var long = position.coords.longitude;
+        alert(lat);
+        alert(long);
+    }
+
+    function failure(){
+        alert("Could not get location.");
+    }
+</script>
 <% include ../partials/footer %>
