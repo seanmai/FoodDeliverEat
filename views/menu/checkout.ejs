@@ -64,6 +64,8 @@
                     <hr>
                     <button type="submit" class="btn btn-success">Place Order</button>
             </div>
+            <input class="form-control" type="text" name="lat" id="lat" hidden="true">
+            <input class="form-control" type="text" name="lng" id="lng" hidden="true">
         </form>
     </div>
 <% } else { %>
@@ -74,4 +76,21 @@
     </div>
 <% } %>
 
+<script>
+    nav = navigator.geolocation;
+    nav.getCurrentPosition(success, failure);
+
+    function success(position){
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        $("#lat").val(lat);
+        $("#lng").val(lng);
+        alert(lat);
+        alert(lng);
+    }
+
+    function failure(){
+        alert("Could not get location.");
+    }
+</script>
 <% include ../partials/footer %>

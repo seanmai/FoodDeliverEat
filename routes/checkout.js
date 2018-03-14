@@ -59,11 +59,14 @@ router.post("/", function(req, res){
             username: req.user.username
         };
     }
+
     var order = new Order({
         user: user,
         name: req.body.name,
         phone: req.body.phone,
         cart: cart,
+        lat: req.body.lat,
+        lng: req.body.lng,
         deliveryTime: Date.now(),
         payment: req.body.paymentOption,
         instructions: req.body.note
