@@ -1,8 +1,20 @@
 <% include ../partials/header %>
 
 <div class="row">
-    <div class="col-md-9 col-md-offset-3">
-        <h1>Hello there</h1>
+    <div class="col-md-8 col-md-offset-2">
+        <% orders.forEach(function(order){ %>
+            <div class="thumbnail" style="margin-top: 20px; ">
+                <div class="subdiv">
+                    <h1><%= order.name %></h1>
+                    <p><%= order.phone %></p>
+                    <% for(var id in order.cart.items){ %>
+                        <p><%= order.cart.items[id].item.name %></p>
+                    <% } %>
+
+                </div>
+
+            </div>
+        <% }); %>
     </div>
 </div>
 

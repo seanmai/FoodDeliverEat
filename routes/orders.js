@@ -10,9 +10,13 @@ router.get("/", function(req, res){
         if(err){
             console.log(err)
         } else {
+            console.log(orders[0].cart.items);
             res.render("orders/index", {orders: orders})
         }
     })
 });
 
 module.exports = router;
+
+// for items in orders.cart.items(print items)
+// var arr = cart[0].generate array
