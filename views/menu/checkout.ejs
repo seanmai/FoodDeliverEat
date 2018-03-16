@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="orderContainer col-md-4">
-                <div class="">
+                <div>
                     <img class="center-block d-flex" style="height:300px; width:100%; object-fit: cover;" src="https://static1.squarespace.com/static/53f144b0e4b0bfa013c298ad/545c2a5ee4b0ba3d01d7612a/59ee70490abd0407c4768739/1508798545034/Acitron-Cocina-High+Res.JPG?format=1500w" alt="">
                 </div>
                 <div class="">
@@ -63,7 +63,9 @@
                     <% }); %>
                 </div>
                 <div class="checkout-total">
-                    <strong>Total: $<%= totalPrice.toFixed(2) %></strong>
+                    <p>Subtotal: <span class="checkout-price">$<%= totalPrice.toFixed(2) %></span></p>
+                    <p>Tax: <span class="checkout-price">$<%= (totalPrice * 0.05).toFixed(2) %></span></p>
+                    <p style="margin-top: 10px;"><strong>Total: <span class="checkout-price">$<%= (totalPrice * 1.05).toFixed(2) %><span></strong></p>
                 </div>
                 <hr>
                 <button type="submit" class="btn btn-primary">Place Order</button>
