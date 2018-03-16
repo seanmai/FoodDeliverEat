@@ -9,6 +9,13 @@ var UserSchema = new mongoose.Schema({
     firstName: {type: String, required: false},
     lastName: {type: String, required: false},
     phoneNumber: {type: Number, required: false},
+    orders: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Order",
+            required: false
+        }
+    ],
     isAdmin: {type: Boolean, default: false}
 });
 

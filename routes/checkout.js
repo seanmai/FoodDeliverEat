@@ -60,6 +60,7 @@ router.post("/", function(req, res){
         return res.redirect("/checkout");
     }
     var cart = new Cart(req.session.cart);
+    // cart.totalPrice *= 1.05;
     if(!req.user){
         var user = {};
     } else {
@@ -80,6 +81,10 @@ router.post("/", function(req, res){
         payment: req.body.paymentOption,
         instructions: req.body.note
     });
+
+    if(req.user){
+        req.user.orders.push(order);    
+    }
     Order.create(order, function(err, order){
         if(err){
             req.flash("error", err.message);
