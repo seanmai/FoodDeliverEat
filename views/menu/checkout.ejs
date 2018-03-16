@@ -57,12 +57,14 @@
                             <span>$<%= food.price.toFixed(2) %></span>
                         </div>
                         <div class="checkout-item checkout-item-remove">
-                            <a href="/checkout/cart-remove/<%= food.item._id %>" style="text-decoration: none;"><span aria-hidden="true">&times;</span></a>
+                            <a href="/checkout/cart-remove/<%= food.item._id %>" style="text-decoration: none;">Remove</span></a>
                         </div>
                     </div>
                     <% }); %>
                 </div>
-                <strong>Total: $<%= totalPrice.toFixed(2) %></strong>
+                <div class="checkout-total">
+                    <strong>Total: $<%= totalPrice.toFixed(2) %></strong>
+                </div>
                 <hr>
                 <button type="submit" class="btn btn-primary">Place Order</button>
             </div>
