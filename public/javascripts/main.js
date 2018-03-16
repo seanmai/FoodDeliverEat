@@ -9,6 +9,7 @@
 $(document).ready(function(){
     fixNav();
     setBindings();
+    $(".dropdown-toggle").dropdown();
 });
 
 // Sticking category navbar
