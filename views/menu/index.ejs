@@ -2,7 +2,7 @@
 
 <div class="">
     <div class="">
-        <img class="center-block d-flex" style="height:300px; width:100%" src="http://media-cdn.tripadvisor.com/media/photo-s/01/d7/df/b7/food-on-beach.jpg" alt="">
+        <img class="center-block d-flex" style="height:300px; width:100%; object-fit: cover;" src="https://static1.squarespace.com/static/53f144b0e4b0bfa013c298ad/545c2a5ee4b0ba3d01d7612a/59ee70490abd0407c4768739/1508798545034/Acitron-Cocina-High+Res.JPG?format=1500w" alt="">
     </div>
     <div class="">
         <div class="">
@@ -30,7 +30,7 @@
                                     </div> -->
                                     <h4><%= food.name %></h4>
                                     <p><%- food.description.length > 163 ? food.description.substring(0, 160) + "..." : food.description %></p>
-                                    <p>$<%= food.price %>.00</p>
+                                    <p>$<%= food.price.toFixed(2) %></p>
                                 </div>
                             </div>
                         <% } %>
@@ -42,8 +42,11 @@
                                       <span aria-hidden="true">&times;</span>
                                   </button> -->
                                   <img class="modal-img" src="<%= food.image %>" style="width: 100%;">
-                                  <div class="modal-text-content" style="padding: 15px;">
-                                      <p><%= food.description %></p>
+                                  <div class="modal-text-content">
+                                      <h1><%= food.name %></h1>
+                                      <div class="modal-description"  style="padding: 0 25px;">
+                                          <p><%= food.description %></p>
+                                      </div>
                                   </div>
                               </div>
                               <div class="modal-footer">
