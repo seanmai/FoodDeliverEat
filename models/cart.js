@@ -13,6 +13,25 @@ module.exports = function Cart(initCart){
         this.totalQty++;
         this.totalPrice += storedItem.item.price;
     };
+    //Add third argument, quantity
+    //storedItem.qty += quantity
+    //this.totalQty += quantity
+
+    this.setQuantity = function(id, qty) {
+        var tempQty = this.items[id].qty
+        var tempPrice = this.items[id].price
+        this.items[id].qty = qty;
+        this.items[id].price = this.items[id].item.price * qty;
+        this.totalQty -= (tempQty-this.items[id].qty);
+        this.totalPrice -= (tempPrice-this.items[id].price);
+    }
+
+    this.increaseByOne = function(id) {
+        this.items[id].qty++;
+        this.items[id].price += this.items[id].item.price;
+        this.totalQty++;
+        this.totalPrice += this.items[id].item.price;
+    };
 
     this.reduceByOne = function(id) {
         this.items[id].qty--;

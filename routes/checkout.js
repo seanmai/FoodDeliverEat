@@ -25,7 +25,7 @@ router.get("/cart-quantity/:id", function(req, res){
     var productId = req.params.id;
     var cart = new Cart(req.session.cart ? req.session.cart : {});
     var quantity = req.body.qty;
-    cart.reduceByOne(id, );
+    cart.reduceByOne(id);
     req.session.cart = cart;
     res.redirect("/checkout");
 });

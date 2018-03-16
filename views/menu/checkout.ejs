@@ -1,5 +1,7 @@
 <% include ../partials/header %>
 
+
+
 <!-- The foods that was passed in is the generated array from carts object -->
 <% if(foods && session.cart.totalQty > 0){ %>
     <div class="base">
@@ -37,32 +39,32 @@
                 </div>
             </div>
             <div class="orderContainer col-md-4">
-                <ul class="list-group">
+                <div class="">
+                    <img class="center-block d-flex" style="height:300px; width:100%; object-fit: cover;" src="https://static1.squarespace.com/static/53f144b0e4b0bfa013c298ad/545c2a5ee4b0ba3d01d7612a/59ee70490abd0407c4768739/1508798545034/Acitron-Cocina-High+Res.JPG?format=1500w" alt="">
+                </div>
+                <div class="">
                     <% foods.forEach(function(food){ %>
-                        <li class="list-group-item">
-                            <!-- <input type="number" name="qty" value="<%= food.qty %>"> -->
-                            <div style="width: 500px;">
-                                <div style="float: left; width: 30px;">
-                                    <select class="qty" name=""></select>
-                                </div>
-                                <div class="description" style="float: left; width: 100px;">
-                                    <strong><%= food.item.name %></strong>
-
-                                </div>
-                                <div class="price" style="float: left; width: 100px;">
-                                    <span>$<%= food.price %></span>
-                                </div>
-                                <div class="remove">
-                                    <a href="/checkout/cart-remove/<%= food.item._id %>" style="text-decoration: none;">X</a>
-                                </div>
-
-                            </div>
-                        </li>
-                        <% }); %>
-                    </ul>
-                    <strong>Total: <%= totalPrice %></strong>
-                    <hr>
-                    <button type="submit" class="btn btn-success">Place Order</button>
+                    <div class="checkout-row">
+                        <div class="checkout-item checkout-item-qty">
+                            <a><i class="glyphicon glyphicon-minus"></i></a>
+                            <span style="padding: 0 8px;"><strong><%= food.qty %></strong></span>
+                            <a><i class="glyphicon glyphicon-plus"></i></a>
+                        </div>
+                        <div class="checkout-item checkout-item-name">
+                            <strong><%= food.item.name %></strong>
+                        </div>
+                        <div class="checkout-item checkout-item-price">
+                            <span>$<%= food.price.toFixed(2) %></span>
+                        </div>
+                        <div class="checkout-item checkout-item-remove">
+                            <a href="/checkout/cart-remove/<%= food.item._id %>" style="text-decoration: none;"><span aria-hidden="true">&times;</span></a>
+                        </div>
+                    </div>
+                    <% }); %>
+                </div>
+                <strong>Total: $<%= totalPrice.toFixed(2) %></strong>
+                <hr>
+                <button type="submit" class="btn btn-primary">Place Order</button>
             </div>
             <input class="form-control" type="text" name="lat" id="lat" hidden="true">
             <input class="form-control" type="text" name="lng" id="lng" hidden="true">
@@ -85,8 +87,8 @@
         var lng = position.coords.longitude;
         $("#lat").val(lat);
         $("#lng").val(lng);
-        alert(lat);
-        alert(lng);
+        // alert(lat);
+        // alert(lng);
     }
 
     function failure(){
