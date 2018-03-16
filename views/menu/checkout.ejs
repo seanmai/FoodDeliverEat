@@ -46,9 +46,9 @@
                     <% foods.forEach(function(food){ %>
                     <div class="checkout-row">
                         <div class="checkout-item checkout-item-qty">
-                            <a><i class="glyphicon glyphicon-minus"></i></a>
+                            <a href="/checkout/cart-reduce-one/<%= food.item._id %>"><i class="glyphicon glyphicon-minus"></i></a>
                             <span style="padding: 0 8px;"><strong><%= food.qty %></strong></span>
-                            <a><i class="glyphicon glyphicon-plus"></i></a>
+                            <a href="/checkout/cart-increase-one/<%= food.item._id %>"<i class="glyphicon glyphicon-plus"></i></a>
                         </div>
                         <div class="checkout-item checkout-item-name">
                             <strong><%= food.item.name %></strong>

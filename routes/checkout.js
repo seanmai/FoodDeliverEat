@@ -21,11 +21,20 @@ router.get("/add-to-cart/:id", function(req, res){
     });
 });
 
-router.get("/cart-quantity/:id", function(req, res){
+router.get("/cart-reduce-one/:id", function(req, res){
     var productId = req.params.id;
     var cart = new Cart(req.session.cart ? req.session.cart : {});
     var quantity = req.body.qty;
-    cart.reduceByOne(id);
+    cart.reduceByOne(productId);
+    req.session.cart = cart;
+    res.redirect("/checkout");
+});
+
+router.get("/cart-increase-one/:id", function(req, res){
+    var productId = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {});
+    var quantity = req.body.qty;
+    cart.increaseByOne(productId);
     req.session.cart = cart;
     res.redirect("/checkout");
 });
