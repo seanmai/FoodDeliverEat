@@ -1,0 +1,29 @@
+.order-container{
+    margin-top: 20px;
+    border: 1px solid #dddddd
+}
+
+.customer-row{
+    display: block;
+    height: 55px;
+    padding: 12px;
+    border-bottom: 1px solid #eeeeee;
+    background: pink;
+}
+
+.customer-info{
+    display: inline-block;
+    flex: right;
+}
+
+.delivery-time{
+    width: 20%;
+}
+
+.customer-name{
+    width:
+}
+
+.customer-phone{
+    width:
+}

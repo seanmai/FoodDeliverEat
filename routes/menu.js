@@ -32,6 +32,44 @@ router.get("/:id", function(req, res){
     });
 });
 
+router.get("/edit", function(req, res){
+    Food.find({}, function(err, foods){
+        var category = [];
+        foods.forEach(function(food){
+            if(middleware.notInArray(food.type, category)){
+                category.push(food.type);
+            }
+        });
+        if(err){
+            console.log(err);
+        } else{
+            res.render("menu/index", {foods: foods, category: category});
+        }
+    });
+});
+
+router.put("/:id", function(req, res){
+    Food.findByIdAndUpdate(req.params.id, req.body.food, function(err, updatedFood){
+        if(err){
+            req.flash("error", err.message);
+            res.redirect("/menu/edit");
+        } else {
+            req.flash("success","Successfully Updated");
+            res.redirect("/menu/edit");
+        }
+    });
+});
+
+router.delete("/:id", function(req, res){
+    Food.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.redirect("/menu/edit");
+        } else{
+            res.redirect("/menu/edit");
+        }
+    })
+});
+
 router.get("/orders", function(req, res){
     Order.find({}, function(err, orders){
         if(err){
