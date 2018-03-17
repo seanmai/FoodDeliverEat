@@ -93,9 +93,12 @@ body{
 
 .checkout-item-price{
     width: 70px;
+    text-align: right;
+    float: right;
 }
 
 .checkout-item-remove{
+    display: block;
     width: 70px;
     padding-left: 95px;
 }
