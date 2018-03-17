@@ -7,6 +7,7 @@
                 <div class="subdiv">
                     <h1><%= order.name %></h1>
                     <p><%= order.phone %></p>
+                    <p><%= order.deliveryTime %></p>
                     <% for(var id in order.cart.items){ %>
                         <p><%= order.cart.items[id].item.name %></p>
                     <% } %>
