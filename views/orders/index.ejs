@@ -48,7 +48,7 @@
                                 <p><strong><%= order.cart.items[id].item.name %></strong></p>
                             </div>
                             <div class="order-item order-item-price">
-                                <p><strong><%= (order.cart.items[id].price * order.cart.items[id].qty).toFixed(2) %></strong></p>
+                                <p>$<%= (order.cart.items[id].price * order.cart.items[id].qty).toFixed(2) %></p>
                             </div>
                         </div>
                     <% } %>
@@ -71,26 +71,5 @@
         <% }); %>
     </div>
 </div>
-
-<!-- <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <% orders.forEach(function(order){ %>
-            <div class="thumbnail" style="margin-top: 20px; ">
-                <div class="subdiv">
-                    <h1><%= order.name %></h1>
-                    <p><%= order.phone %></p>
-                    <p><%= order.deliveryTime %></p>
-                    <% for(var id in order.cart.items){ %>
-                        <p><%= order.cart.items[id].item.name %></p>
-                        <p><%= order.cart.items[id].qty %></p>
-                        <p><%= (order.cart.items[id].price * order.cart.items[id].qty).toFixed(2) %></p>
-                    <% } %>
-                    <p><%= order.cart.totalPrice.toFixed(2) %></p>
-                </div>
-                <a href="https://www.google.com/maps/?q=<%= order.lat %>, <%= order.lng %>" target="_blank" class="btn btn-lg btn-success"></a>
-            </div>
-        <% }); %>
-    </div>
-</div> -->
 
 <% include ../partials/footer %>
