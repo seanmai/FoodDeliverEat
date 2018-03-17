@@ -5,7 +5,7 @@
 
 .customer-row{
     display: block;
-    height: 55px;
+    height: 75px;
     padding: 12px;
     border-bottom: 1px solid #eeeeee;
     background: pink;
@@ -14,16 +14,4 @@
 .customer-info{
     display: inline-block;
     flex: right;
-}
-
-.delivery-time{
-    width: 20%;
-}
-
-.customer-name{
-    width:
-}
-
-.customer-phone{
-    width:
 }
