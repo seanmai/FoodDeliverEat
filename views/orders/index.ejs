@@ -55,7 +55,9 @@
                 </div>
                 <div class="order-button-container">
                     <a href="https://www.google.com/maps/?q=<%= order.lat %>, <%= order.lng %>" target="_blank" class="btn btn-primary">Deliver Order</a>
-                    <a href="https://www.google.com/maps/?q=<%= order.lat %>, <%= order.lng %>" target="_blank" class="btn btn-default">Cancel Order</a>
+                    <form class="delete-form" action="/orders/<%= order._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-default">Cancel Order</button>
+                    </form>
                 </div>
                 <div class="order-total-container">
                     <div class="order-total">

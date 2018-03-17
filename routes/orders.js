@@ -16,4 +16,14 @@ router.get("/", function(req, res){
     })
 });
 
+router.delete("/:id", function(req, res){
+    Order.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.redirect("/orders");
+        } else{
+            res.redirect("/orders");
+        }
+    })
+});
+
 module.exports = router;
