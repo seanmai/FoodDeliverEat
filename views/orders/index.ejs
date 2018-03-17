@@ -38,13 +38,33 @@
                         <p><%= order._id %></p>
                     </div>
                 </div>
+                <div class="order-item-container">
                     <% for(var id in order.cart.items){ %>
-                        <p><%= order.cart.items[id].item.name %></p>
-                        <p><%= order.cart.items[id].qty %></p>
-                        <p><%= (order.cart.items[id].price * order.cart.items[id].qty).toFixed(2) %></p>
+                        <div class="order-item-row">
+                            <div class="order-item">
+                                <p><strong><%= order.cart.items[id].qty %> - </strong></p>
+                            </div>
+                            <div class="order-item">
+                                <p><strong><%= order.cart.items[id].item.name %></strong></p>
+                            </div>
+                            <div class="order-item order-item-price">
+                                <p><strong><%= (order.cart.items[id].price * order.cart.items[id].qty).toFixed(2) %></strong></p>
+                            </div>
+                        </div>
                     <% } %>
-                    <p><%= order.cart.totalPrice.toFixed(2) %></p>
-                <a href="https://www.google.com/maps/?q=<%= order.lat %>, <%= order.lng %>" target="_blank" class="btn btn-lg btn-success"></a>
+                </div>
+                <div class="order-button-container">
+                    <a href="https://www.google.com/maps/?q=<%= order.lat %>, <%= order.lng %>" target="_blank" class="btn btn-primary">Deliver Order</a>
+                    <a href="https://www.google.com/maps/?q=<%= order.lat %>, <%= order.lng %>" target="_blank" class="btn btn-default">Cancel Order</a>
+                </div>
+                <div class="order-total-container">
+                    <div class="order-total">
+                        <p>Subtotal: <span class="checkout-price">$<%= order.cart.totalPrice.toFixed(2) %></span></p>
+                        <p>Tax: <span class="checkout-price">$<%= (order.cart.totalPrice * 0.05).toFixed(2) %></span></p>
+                        <p style="margin-top: 10px;"><strong>Total: <span class="checkout-price">$<%= (order.cart.totalPrice * 1.05).toFixed(2) %><span></strong></p>
+                    </div>
+
+                </div>
             </div>
         <% }); %>
     </div>

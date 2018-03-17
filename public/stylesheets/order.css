@@ -1,5 +1,5 @@
 .order-container{
-    margin-top: 20px;
+    margin: 20px 0;
     border: 1px solid #dddddd
 }
 
@@ -13,5 +13,48 @@
 
 .customer-info{
     display: inline-block;
-    flex: right;
+}
+
+.order-item-container{
+    display: inline-block;
+    margin: 10px 12px;
+    border-bottom: 1px solid #eeeeee;
+    width: 68%;
+}
+
+.order-item-row{
+    display: block;
+}
+
+.order-item{
+    display: inline-block;
+    padding: 0 8px;
+    font-size: 15px;
+}
+
+.order-item-price{
+    text-align: right;
+    float: right;
+}
+
+.order-button-container{
+    display: inline-block;
+    width: 29%;
+}
+
+.order-button-container .btn{
+    display: block;
+    margin: 5px auto 0 auto;
+    width: 90%;
+    font-size: 16px;
+}
+
+.order-total-container{
+    display: block;
+    margin: 10px 12px;
+    width: 68%;
+}
+
+.order-total-container p{
+    margin: 0;
 }
