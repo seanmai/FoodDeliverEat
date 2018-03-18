@@ -15,6 +15,14 @@
     padding: 10px 25px;
 }
 
+.modal-radio label{
+    font: inherit;
+}
+
 .modal-select{
     padding: 10px 25px;
+}
+
+.modal-select label{
+    font: inherit;
 }

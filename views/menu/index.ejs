@@ -52,7 +52,7 @@
                                               <% for(var i = 0; i  < food.radioInput.length; i++){ %>
                                                   <h4><%= food.radioInput[i].name %></h4>
                                                   <% for(var j = 0; j < food.radioInput[i].items.length; j++){ %>
-                                                      <input type="radio" name="<%= food.radioInput[i].name %>" value="<%= food.radioInput[i].items[j] %>"> <%= food.radioInput[i].items[j] %> <br>
+                                                      <label for="<%= food.radioInput[i].items[j].replace(/\s+/g, '-').toLowerCase(); %>-radio"><input type="radio" id="<%= food.radioInput[i].items[j].replace(/\s+/g, '-').toLowerCase(); %>-radio" name="<%= food.radioInput[i].name %>" value="<%= food.radioInput[i].items[j] %>" style="font-weight: 300;"> <%= food.radioInput[i].items[j] %></label> <br>
                                                   <% } %>
                                               <% } %>
                                           </div>
@@ -62,7 +62,7 @@
                                               <% for(var i = 0; i  < food.selectInput.length; i++){ %>
                                                   <h4><%= food.selectInput[i].name %></h4>
                                                   <% for(var j = 0; j < food.selectInput[i].items.length; j++){ %>
-                                                      <input type="select" name="<%= food.selectInput[i].name %>" value="<%= food.selectInput[i].items[j] %>"> <%= food.selectInput[i].items[j] %> <br>
+                                                      <label for="<%= food.selectInput[i].items[j].replace(/\s+/g, '-').toLowerCase(); %>-select"><input type="select" id="<%= food.selectInput[i].items[j].replace(/\s+/g, '-').toLowerCase(); %>-select" name="<%= food.selectInput[i].name %>" value="<%= food.selectInput[i].items[j] %>" style="font-weight: 300;"> <%= food.selectInput[i].items[j] %></label> <br>
                                                   <% } %>
                                               <% } %>
                                           </div>
