@@ -2,11 +2,26 @@ var mongoose = require("mongoose");
 var Food = require("./models/food");
 var data = [
     {
+        name: "Fish Tacos",
+        description: "Not one taco, but two! Golden fried basa filet, Asian slaw, mozzarella cheese, mango, and fresh cut salsa served on a soft flour tortilla. Served with a side of fries.",
+        image: "https://asset.homechef.com/uploads/meal/plated/3956/homechef_Baja_Fish_Tacos__1_of_1_-741131fd16f422e95cd878079796d35d-741131fd16f422e95cd878079796d35d.jpg",
+        price: "9",
+        type: "Snack",
+    },
+    {
         name: "Chicken Tenders",
         description: "Classic Chicken Tenders served with our classic plum sauce and a side of fries",
         image: "https://images-gmi-pmc.edge-generalmills.com/8b648fc0-1cf6-46f2-b923-a48d16923eb9.jpg",
         price: "12",
         type: "Snack",
+        radioInput: [{
+            name: "Dipping Sauce",
+            items: [
+                "Sweet and Sour",
+                "Honey Mustard",
+                "Barbecue"
+            ]
+        }]
     },
     {
         name: "Grilled Cheese",
@@ -56,13 +71,6 @@ var data = [
         image: "http://images.meredith.com/content/dam/bhg/Images/recipe/41/R055343.jpg.rendition.largest.ss.jpg",
         price: "12",
         type: "Sandwich",
-    },
-    {
-        name: "Fish Tacos",
-        description: "Not one taco, but two! Golden fried basa filet, Asian slaw, mozzarella cheese, mango, and fresh cut salsa served on a soft flour tortilla. Served with a side of fries.",
-        image: "https://asset.homechef.com/uploads/meal/plated/3956/homechef_Baja_Fish_Tacos__1_of_1_-741131fd16f422e95cd878079796d35d-741131fd16f422e95cd878079796d35d.jpg",
-        price: "9",
-        type: "Snack",
     },
     {
         name: "Caeser Salad",

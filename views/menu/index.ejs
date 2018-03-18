@@ -29,8 +29,8 @@
                                         <img src="<%= food.image %>">
                                     </div> -->
                                     <h4><%= food.name %></h4>
-                                    <p><%- food.description.length > 163 ? food.description.substring(0, 160) + "..." : food.description %></p>
-                                    <p>$<%= food.price.toFixed(2) %></p>
+                                    <span style="color: #777777;"><p><%- food.description.length > 163 ? food.description.substring(0, 160) + "..." : food.description %></p></span>
+                                    <span style="position: absolute; bottom: 15px; font-weight: 500; font-size: 15px;"><p>$<%= food.price.toFixed(2) %></p></span>
                                 </div>
                             </div>
                         <% } %>
@@ -44,9 +44,29 @@
                                   <img class="modal-img" src="<%= food.image %>" style="width: 100%;">
                                   <div class="modal-text-content">
                                       <h1><%= food.name %></h1>
-                                      <div class="modal-description"  style="padding: 0 25px;">
+                                      <div class="modal-description"  style="padding: 0 25px; color: #777777;">
                                           <p><%= food.description %></p>
                                       </div>
+                                      <% if(food.radioInput[i] != []){ %>
+                                          <div class="modal-radio">
+                                              <% for(var i = 0; i  < food.radioInput.length; i++){ %>
+                                                  <h4><%= food.radioInput[i].name %></h4>
+                                                  <% for(var j = 0; j < food.radioInput[i].items.length; j++){ %>
+                                                      <input type="radio" name="<%= food.radioInput[i].name %>" value="<%= food.radioInput[i].items[j] %>"> <%= food.radioInput[i].items[j] %> <br>
+                                                  <% } %>
+                                              <% } %>
+                                          </div>
+                                      <% } %>
+                                      <% if(food.selectInput[i] != []){ %>
+                                          <div class="modal-select">
+                                              <% for(var i = 0; i  < food.selectInput.length; i++){ %>
+                                                  <h4><%= food.selectInput[i].name %></h4>
+                                                  <% for(var j = 0; j < food.selectInput[i].items.length; j++){ %>
+                                                      <input type="select" name="<%= food.selectInput[i].name %>" value="<%= food.selectInput[i].items[j] %>"> <%= food.selectInput[i].items[j] %> <br>
+                                                  <% } %>
+                                              <% } %>
+                                          </div>
+                                      <% } %>
                                   </div>
                               </div>
                               <div class="modal-footer">

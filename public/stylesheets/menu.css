@@ -1,0 +1,20 @@
+.food-item {
+    border: 1px solid #c5c5c5;
+    padding: 10px 15px;
+    margin: 10px;
+    height: 150px;
+}
+
+.navbar-fixed {
+    top: 51px;
+    z-index: 10;
+}
+
+
+.modal-radio{
+    padding: 10px 25px;
+}
+
+.modal-select{
+    padding: 10px 25px;
+}

@@ -2,6 +2,10 @@ body{
     position: relative;
 }
 
+#content {
+    margin-top: 51px;
+}
+
 .navbar .container-fluid {
     padding: 0 40px;
 }
@@ -11,21 +15,4 @@ body{
 
 .container-fluid h1 {
     padding-left: 25px;
-}
-
-.food-item {
-    border: 1px solid #c5c5c5;
-    padding: 0;
-    padding-left: 16px;
-    margin: 10px;
-    height: 150px;
-}
-
-.navbar-fixed {
-    top: 51px;
-    z-index: 10;
-}
-
-#content {
-    margin-top: 51px;
 }
