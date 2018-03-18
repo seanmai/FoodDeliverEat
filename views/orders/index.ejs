@@ -22,8 +22,7 @@
                         <p><strong>Order Number</strong></p>
                     </div>
                     <div class="customer-info col-md-3">
-                        <!-- <p><%= order.deliveryTime %></p> -->
-                        <p>March 17th 2018, 1:11:26 pm</p>
+                        <p><%= moment(order.deliveryTime).format("LLLL") %></p>
                     </div>
                     <div class="customer-info col-md-2">
                         <p><%= order.name %></p>
