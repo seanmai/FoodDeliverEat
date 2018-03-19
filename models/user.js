@@ -12,8 +12,7 @@ var UserSchema = new mongoose.Schema({
     orders: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Order",
-            required: false
+            ref: "Order"
         }
     ],
     isAdmin: {type: Boolean, default: false}

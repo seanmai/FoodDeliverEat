@@ -56,11 +56,12 @@ router.get("/logout", function(req, res){
 
 //User Profile
 router.get("/:id", function(req, res){
-    User.findById(req.params.id, function(err, foundUser){
+    User.findById(req.params.id).populate("orders").exec(function(err, foundUser){  // Must use populate method to populate orders from objectID
         if(err){
             req.flash("error", err.message);
             return res.redirect("/menu");
         }
+        console.log(foundUser);
         res.render("user/profile", {page: "profile", user: foundUser});
     });
 });

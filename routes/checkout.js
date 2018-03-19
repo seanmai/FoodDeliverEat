@@ -16,7 +16,7 @@ router.get("/add-to-cart/:id", function(req, res){
         }
         cart.add(food, food.id);
         req.session.cart = cart;
-        console.log(req.session.cart);
+        // console.log(req.session.cart);
         res.redirect("/menu");
     });
 });
@@ -82,20 +82,21 @@ router.post("/", function(req, res){
         instructions: req.body.note
     });
 
-    if(req.user){
-        req.user.orders.push(order);
-        req.user.save();
-    }
     Order.create(order, function(err, order){
         if(err){
             req.flash("error", err.message);
             return res.redirect("back");
         }
+        if(req.user){
+            order.save();
+            req.user.orders.push(order);
+            req.user.save();
+        }
+        // console.log(order);
         req.session.cart = {};
         req.flash("success", "Sit tight, your order is on the way!");
         res.redirect("/")
     })
-    console.log(order);
 });
 
 module.exports = router;

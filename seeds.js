@@ -4,7 +4,7 @@ var data = [
     {
         name: "Fish Tacos",
         description: "Not one taco, but two! Golden fried basa filet, Asian slaw, mozzarella cheese, mango, and fresh cut salsa served on a soft flour tortilla. Served with a side of fries.",
-        image: "https://asset.homechef.com/uploads/meal/plated/3956/homechef_Baja_Fish_Tacos__1_of_1_-741131fd16f422e95cd878079796d35d-741131fd16f422e95cd878079796d35d.jpg",
+        image: "http://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/fish-tacos-lime-cilantro-crema-ck.jpg?itok=k9Ur5-v7",
         price: "9",
         type: "Snack",
     },

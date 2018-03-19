@@ -1,9 +1,13 @@
 <% include ../partials/header %>
 
-<h1>Profile</h1>
-<% user.orders.forEach(function(order){ %>
-    <p>Hello</p>
-<% }) %>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h1>Profile</h1>
+        <% user.orders.forEach(function(order){ %>
+            <strong><%= order.name %></strong>
+        <% }) %>
 
+    </div>
+</div>
 
 <% include ../partials/footer %>
