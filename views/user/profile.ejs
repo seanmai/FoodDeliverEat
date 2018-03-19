@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <% if(user.orders != []){ %>
+        <% if(user.orders[0] != null){ %>
             <h1>Profile</h1>
             <% user.orders.forEach(function(order){ %>
                 <div class="order-container">
