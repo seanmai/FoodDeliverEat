@@ -37,8 +37,8 @@
                                     <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/user/login">Sign In</a></li>
                                     <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/user/register">Sign Up</a></li>
                                 <% } else { %>
-                                    <li><a href="/user/<%= currentUser._id %>">Profile</a></li>
-                                    <li><a href="/orders">View Orders</a></li>
+                                    <li class="<%= typeof page !== 'undefined' && page === 'profile' ? 'active' : '' %>"><a href="/user/<%= currentUser._id %>">Profile</a></li>
+                                    <li class="<%= typeof page !== 'undefined' && page === 'orders' ? 'active' : '' %>"><a href="/orders">View Orders</a></li>
                                     <li><a href="/user/logout">Sign Out</a></li>
                                 <% } %>
                             </ul>
@@ -58,7 +58,7 @@
         <div id="content">
         <div class="container">
         <% if(success && success.length > 0){ %>
-            <div class="alert alert-success" role="alert" style="z-index: 100; position: fixed; right: 0;">
+            <div class="alert alert-success" role="alert" style="z-index: 100; position: fixed; right: 175px; min-width:150px;">
                 <%= success %>
             </div>
         <% } %>

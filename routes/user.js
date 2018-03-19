@@ -36,7 +36,7 @@ router.post("/register", function(req, res){
 
 //Show login form
 router.get("/login", function(req, res){
-    res.render("user/login", {page: "login", csrfToken: req.csrfToken()});
+    res.render("user/login", {page: "login", csrfToken: req.csrfToken()});  //page: orders for header navbar active
 });
 
 //Handles login logic using passport middleware
@@ -61,7 +61,7 @@ router.get("/:id", function(req, res){
             req.flash("error", err.message);
             return res.redirect("/menu");
         }
-        res.render("user/profile", {user: foundUser});
+        res.render("user/profile", {page: "profile", user: foundUser});
     });
 });
 
