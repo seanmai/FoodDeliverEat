@@ -10,4 +10,9 @@
     border: 1px solid #dddddd;
     border-top: none;
     position: fixed;
+    width: 300px;
+}
+
+.nav-pills li a{
+    padding: 15px 30px;
 }
