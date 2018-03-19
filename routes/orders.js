@@ -10,7 +10,6 @@ router.get("/", function(req, res){
         if(err){
             console.log(err)
         } else {
-            console.log(orders[0].cart.items);
             res.render("orders/index", {orders: orders})
         }
     })
