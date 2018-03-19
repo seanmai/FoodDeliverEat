@@ -61,7 +61,7 @@ router.get("/:id", function(req, res){
             req.flash("error", err.message);
             return res.redirect("/menu");
         }
-        console.log(foundUser);
+        // console.log(foundUser);
         res.render("user/profile", {page: "profile", user: foundUser});
     });
 });

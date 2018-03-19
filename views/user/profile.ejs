@@ -1,8 +1,8 @@
 <% include ../partials/header %>
 
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <% if(user.orders[0] != null){ %>
+<% if(user.orders[0] != null){ %>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
             <h1>Profile</h1>
             <% user.orders.forEach(function(order){ %>
                 <div class="order-container">
@@ -75,9 +75,13 @@
                     <% } %>
                 </div>
             <% }) %>
-        <% } else { %>
-            <h1>You have not placed any orders</h1>
-        <% } %>
+        </div>
     </div>
-</div>
+<% } else { %>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <h2>You have not placed any orders</h2>
+        </div>
+    </div>
+<% } %>
 <% include ../partials/footer %>
