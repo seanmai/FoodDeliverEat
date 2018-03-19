@@ -70,8 +70,11 @@
                                   </div>
                               </div>
                               <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <a href="/checkout/add-to-cart/<%= food._id %>" class="btn btn-primary">Add to cart</a>
+                                  <div class="" style="display: inline-block; left: 25px; position: absolute; font-size: 16px; font-weight: 500;">
+                                      <p>$<%= food.price.toFixed(2) %>
+                                  </div>
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <a href="/checkout/add-to-cart/<%= food._id %>" class="btn btn-primary">Add to cart</a>
                               </div>
                             </div>
                           </div>
