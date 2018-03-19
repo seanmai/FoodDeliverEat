@@ -4,7 +4,7 @@
     <div class="">
         <img class="center-block d-flex" style="height:300px; width:100%; object-fit: cover;" src="https://static1.squarespace.com/static/53f144b0e4b0bfa013c298ad/545c2a5ee4b0ba3d01d7612a/59ee70490abd0407c4768739/1508798545034/Acitron-Cocina-High+Res.JPG?format=1500w" alt="">
     </div>
-    <div class="">
+    <div class="menu-container">
         <div class="">
             <nav class="navbar navbar-default navbar-stick">
                 <div class="container-fluid">
@@ -37,11 +37,11 @@
                         <div class="modal fade" id="<%= food._id %>" tabindex="-1" role="dialog" aria-labelledby="<%= food.name %>" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                              <div class="modal-body" style="padding: 0;">
+                              <div class="modal-body" style="padding: 0; border-radius: 4px 4px 0 0;">
                                   <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                   </button> -->
-                                  <img class="modal-img" src="<%= food.image %>" style="width: 100%;">
+                                  <img class="modal-img" src="<%= food.image %>">
                                   <div class="modal-text-content">
                                       <h1><%= food.name %></h1>
                                       <div class="modal-description"  style="padding: 0 25px; color: #777777;">

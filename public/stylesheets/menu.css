@@ -1,8 +1,13 @@
+.menu-container{
+}
+
 .food-item {
     border: 1px solid #c5c5c5;
     padding: 10px 15px;
     margin: 10px;
     height: 150px;
+    background: white;
+    border-radius: 4px;
 }
 
 .navbar-fixed {
@@ -10,6 +15,10 @@
     z-index: 10;
 }
 
+.modal-img{
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+}
 
 .modal-radio{
     padding: 10px 25px;
