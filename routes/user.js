@@ -54,15 +54,39 @@ router.get("/logout", function(req, res){
     res.redirect("/menu");
 });
 
-//User Profile
-router.get("/:id", function(req, res){
+//User Account
+router.get("/:id/account", function(req, res){
+    User.findById(req.params.id).exec(function(err, foundUser){  // Must use populate method to populate orders from objectID
+        if(err){
+            req.flash("error", err.message);
+            return res.redirect("/menu");
+        }
+        // console.log(foundUser);
+        res.render("user/account", {page: "profile", user: foundUser});
+    });
+});
+
+//User Payment
+router.get("/:id/payment-info", function(req, res){
+    User.findById(req.params.id).exec(function(err, foundUser){  // Must use populate method to populate orders from objectID
+        if(err){
+            req.flash("error", err.message);
+            return res.redirect("/menu");
+        }
+        // console.log(foundUser);
+        res.render("user/payment", {page: "payment-info", user: foundUser});
+    });
+});
+
+//User Order History
+router.get("/:id/order-history", function(req, res){
     User.findById(req.params.id).populate("orders").exec(function(err, foundUser){  // Must use populate method to populate orders from objectID
         if(err){
             req.flash("error", err.message);
             return res.redirect("/menu");
         }
         // console.log(foundUser);
-        res.render("user/profile", {page: "profile", user: foundUser});
+        res.render("user/orders", {page: "order-history", user: foundUser});
     });
 });
 

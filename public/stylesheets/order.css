@@ -20,6 +20,7 @@
     margin: 10px 12px;
     border-bottom: 1px solid #dddddd;
     width: 68%;
+    float: left;
 }
 
 .order-item-row{
