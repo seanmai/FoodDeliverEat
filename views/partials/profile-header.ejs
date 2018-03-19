@@ -1,0 +1,10 @@
+<% include ../partials/header %>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li><h2><%= user.firstName %></h2></li>
+                <li class="<%= typeof page !== 'undefined' && page === 'profile' ? 'active' : '' %>"><a href="/user/<%= currentUser._id %>/account">My Account</a></li>
+                <li class="<%= typeof page !== 'undefined' && page === 'payment-info' ? 'active' : '' %>"><a href="/user/<%= currentUser._id %>/payment-info">Payment Options</a></li>
+                <li class="<%= typeof page !== 'undefined' && page === 'order-history' ? 'active' : '' %>"><a href="/user/<%= currentUser._id %>/order-history">Order History</a></li>
+            </ul>
+        </div>

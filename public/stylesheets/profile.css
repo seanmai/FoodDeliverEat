@@ -14,5 +14,9 @@
 }
 
 .nav-pills li a{
-    padding: 15px 30px;
+    padding: 10px 30px;
+}
+
+.nav-pills li h2{
+    padding: 0 30px;
 }
