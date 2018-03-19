@@ -1,9 +1,9 @@
 <% include ../partials/header %>
 
 <h1>Profile</h1>
-<p><%= user.username %></p>
-<% for(var i = 0; i < user.orders.length; i++){ %>
+<% user.orders.forEach(function(order){ %>
     <p>Hello</p>
-<% } %>
+<% }) %>
+
 
 <% include ../partials/footer %>

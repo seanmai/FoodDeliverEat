@@ -65,8 +65,14 @@
                             <p>Tax: <span class="checkout-price">$<%= (order.cart.totalPrice * 0.05).toFixed(2) %></span></p>
                             <p style="margin-top: 10px;"><strong>Total: <span class="checkout-price">$<%= (order.cart.totalPrice * 1.05).toFixed(2) %><span></strong></p>
                         </div>
-
                     </div>
+                    <% if(order.instructions != ""){ %>
+                        <div class="order-total-container">
+                            <div class="order-delivery-instructions">
+                                <p><%= order.instructions %></p>
+                            </div>
+                        </div>
+                    <% } %>
                 </div>
             <% }); %>
         </div>
