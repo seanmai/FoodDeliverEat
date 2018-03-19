@@ -1,0 +1,13 @@
+.nav-pills .active{
+    width: 105%;
+}
+
+.nav-pills {
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 0 0 4px 4px;
+    border: 1px solid #dddddd;
+    border-top: none;
+    position: fixed;
+}
