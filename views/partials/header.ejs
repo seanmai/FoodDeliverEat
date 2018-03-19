@@ -58,13 +58,13 @@
         <div id="content">
         <div class="container">
         <% if(success && success.length > 0){ %>
-                <div class="alert alert-success" role="alert" style="z-index: 100; position: fixed;">
-                    <%= success %>
-                </div>
+            <div class="alert alert-success" role="alert" style="z-index: 100; position: fixed; right: 0;">
+                <%= success %>
+            </div>
         <% } %>
 
         <% if(error && error.length > 0){ %>
-            <div class="alert alert-danger" role="alert" style="z-index: 100; position: fixed;">
+            <div class="alert alert-danger" role="alert" style="z-index: 100; position: fixed; left: 0;">
                 <%= error %>
             </div>
         <% } %>
