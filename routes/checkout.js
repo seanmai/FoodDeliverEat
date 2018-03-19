@@ -83,7 +83,8 @@ router.post("/", function(req, res){
     });
 
     if(req.user){
-        req.user.orders.push(order);    
+        req.user.orders.push(order);
+        req.user.save();
     }
     Order.create(order, function(err, order){
         if(err){
