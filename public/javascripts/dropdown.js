@@ -11,4 +11,9 @@ $(document).ready(function(){
     $('.dropdown').on('hide.bs.dropdown', function() {
         $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
     });
+
+    // Add slideUp animation to Bootstrap dropdown when clicking off of dropdown.
+    $(window).on('click', function() {
+        $('.dropdown').find('.dropdown-menu').first().stop(true, true).slideUp();
+    });
 });

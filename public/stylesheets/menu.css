@@ -1,6 +1,15 @@
 .menu-container{
 }
 
+.parallax-header{
+    background-image: url("https://static1.squarespace.com/static/53f144b0e4b0bfa013c298ad/545c2a5ee4b0ba3d01d7612a/59ee70490abd0407c4768739/1508798545034/Acitron-Cocina-High+Res.JPG?format=1500w");
+    height: 300px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .food-item {
     border: 1px solid #c5c5c5;
     padding: 10px 15px;
