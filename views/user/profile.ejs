@@ -2,12 +2,82 @@
 
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h1>Profile</h1>
-        <% user.orders.forEach(function(order){ %>
-            <strong><%= order.name %></strong>
-        <% }) %>
-
+        <% if(user.orders != []){ %>
+            <h1>Profile</h1>
+            <% user.orders.forEach(function(order){ %>
+                <div class="order-container">
+                    <div class="customer-row">
+                        <div class="customer-info col-md-3">
+                            <p><strong>Order Placed</strong></p>
+                        </div>
+                        <div class="customer-info col-md-2">
+                            <p><strong>Customer Name</strong></p>
+                        </div>
+                        <div class="customer-info col-md-2">
+                            <p><strong>Customer Contact</strong></p>
+                        </div>
+                        <div class="customer-info col-md-2">
+                            <p><strong>Payment Method</strong></p>
+                        </div>
+                        <div class="customer-info col-md-3">
+                            <p><strong>Order Number</strong></p>
+                        </div>
+                        <div class="customer-info col-md-3">
+                            <p><%= moment(order.deliveryTime).format("LLLL") %></p>
+                        </div>
+                        <div class="customer-info col-md-2">
+                            <p><%= order.name %></p>
+                        </div>
+                        <div class="customer-info col-md-2">
+                            <p><%= order.phone %></p>
+                        </div>
+                        <div class="customer-info col-md-2" style="text-transform: capitalize">
+                            <p><%= order.payment %></p>
+                        </div>
+                        <div class="customer-info col-md-3">
+                            <p><%= order._id %></p>
+                        </div>
+                    </div>
+                    <div class="order-item-container">
+                        <% for(var id in order.cart.items){ %>
+                            <div class="order-item-row">
+                                <div class="order-item">
+                                    <p><strong><%= order.cart.items[id].qty %> - </strong></p>
+                                </div>
+                                <div class="order-item">
+                                    <p><strong><%= order.cart.items[id].item.name %></strong></p>
+                                </div>
+                                <div class="order-item order-item-price">
+                                    <p>$<%= (order.cart.items[id].price * order.cart.items[id].qty).toFixed(2) %></p>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                    <div class="order-button-container">
+                        <a href="https://www.google.com/maps/?q=<%= order.lat %>, <%= order.lng %>" target="_blank" class="btn btn-primary">Deliver Order</a>
+                        <form class="delete-form" action="/orders/<%= order._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-default">Cancel Order</button>
+                        </form>
+                    </div>
+                    <div class="order-total-container">
+                        <div class="order-total">
+                            <p>Subtotal: <span class="checkout-price">$<%= order.cart.totalPrice.toFixed(2) %></span></p>
+                            <p>Tax: <span class="checkout-price">$<%= (order.cart.totalPrice * 0.05).toFixed(2) %></span></p>
+                            <p style="margin-top: 10px;"><strong>Total: <span class="checkout-price">$<%= (order.cart.totalPrice * 1.05).toFixed(2) %><span></strong></p>
+                        </div>
+                    </div>
+                    <% if(order.instructions != ""){ %>
+                        <div class="order-total-container">
+                            <div class="order-delivery-instructions">
+                                <p><%= order.instructions %></p>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <h1>You have not placed any orders</h1>
+        <% } %>
     </div>
 </div>
-
 <% include ../partials/footer %>
