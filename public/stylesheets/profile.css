@@ -87,4 +87,39 @@
     float: right;
     position: relative;
     padding-right: 20px;
+    text-align: right;
+}
+
+.order-history-date{
+    font-size: 12px;
+    color: #888888;
+}
+
+.order-history-id a{
+    text-decoration: none;
+}
+
+.modal-order-item-container{
+    display: inline-block;
+    margin: 10px 12px;
+    border-bottom: 1px solid #dddddd;
+    width: 96%;
+    float: left;
+}
+
+.modal-order-total-container{
+    display: block;
+    margin: 10px 12px;;
+    width: 95%;
+    font-size: 15px;
+}
+
+/* Account */
+.account-container{
+    display: inline-block;
+    margin-top: 15px;
+    float: left; padding: 0;
+}
+.account-container h2{
+    margin-bottom: 20px;
 }

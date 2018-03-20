@@ -1,34 +1,110 @@
 <% include ../partials/profile-header %> <!-- Row set up in profile-header -->
 
-
-        <% if(user.orders[0] != null){ %>
-            <div class="col-sm-6 col-md-6 order-history-container">
-                <h2>Order History</h2>
-                <div class="col-md-9 order-history-item-container">
-                <% user.orders.forEach(function(order){ %>
-                        <div class="order-history-item">
-                            <div class="order-history-item-left">
-                                <div class="order-history-name">
-                                    <%= order.name %>
-                                </div>
-                                <div class="order-histroy-payment">
-                                    $<%= (order.cart.totalPrice * 1.05).toFixed(2) %> | <%= order.payment %>
-                                </div>
-                            </div>
-                            <div class="order-history-button">
-                                <a href="" target="_blank" class="btn btn-primary">Order Details</a>
-                            </div>
-                            <div class="order-history-item-right">
-                                
-                            </div>
-                        </div>
-                <% }); %>
+<% if(user.orders[0] != null){ %>
+    <div class="col-sm-6 col-md-6 order-history-container">
+        <h2>Order History</h2>
+        <div class="col-md-9 order-history-item-container">
+        <% user.orders.forEach(function(order){ %>
+            <div class="order-history-item">
+                <div class="order-history-item-left">
+                    <div class="order-history-name">
+                        <%= order.name %>
+                    </div>
+                    <div class="order-histroy-payment">
+                        $<%= (order.cart.totalPrice * 1.05).toFixed(2) %> | <%= order.payment %>
+                    </div>
+                </div>
+                <div class="order-history-button">
+                    <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#<%= order._id %>">Order Details</button>
+                </div>
+                <div class="order-history-item-right">
+                    <div class="order-history-date">
+                        <%= moment(order.deliveryTime).format("ddd LLL") %>
+                    </div>
+                    <div class="order-history-id">
+                        <a href=""><%= order._id %></a>
+                    </div>
                 </div>
             </div>
-        <% } else { %>
-            <div class="col-sm-6 col-md-6 order-history-container">
-                <h2>You have not placed any orders</h2>
+            <!-- Modal -->
+            <div id="<%= order._id %>" class="modal fade" role="dialog">
+                <div class="modal-dialog ">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding: 0;">
+                            <div class="modal-order-container" >
+                                <div class="customer-row">
+                                    <div class="customer-info">
+                                        <p><strong>Order Placed</strong></p>
+                                    </div>
+                                    <div class="customer-info">
+                                        <p><strong>Customer Name</strong></p>
+                                    </div>
+                                    <div class="customer-info">
+                                        <p><strong>Customer Contact</strong></p>
+                                    </div>
+                                    <div class="customer-info">
+                                        <p><strong>Payment Method</strong></p>
+                                    </div>
+                                    <div class="customer-info">
+                                        <p><strong>Order Number</strong></p>
+                                    </div>
+                                    <div class="customer-info">
+                                        <p><%= moment(order.deliveryTime).format("ddd LLL") %></p>
+                                    </div>
+                                    <div class="customer-info">
+                                        <p><%= order.name %></p>
+                                    </div>
+                                    <div class="customer-info">
+                                        <p><%= order.phone %></p>
+                                    </div>
+                                    <div class="customer-info" style="text-transform: capitalize">
+                                        <p><%= order.payment %></p>
+                                    </div>
+                                    <div class="customer-info">
+                                        <p><%= order._id %></p>
+                                    </div>
+                                </div>
+                                <div class="modal-order-item-container">
+                                    <% for(var id in order.cart.items){ %>
+                                        <div class="order-item-row">
+                                            <div class="order-item">
+                                                <p><strong><%= order.cart.items[id].qty %> - </strong></p>
+                                            </div>
+                                            <div class="order-item">
+                                                <p><strong><%= order.cart.items[id].item.name %></strong></p>
+                                            </div>
+                                            <div class="order-item order-item-price">
+                                                <p>$<%= (order.cart.items[id].price * order.cart.items[id].qty).toFixed(2) %></p>
+                                            </div>
+                                        </div>
+                                    <% } %>
+                                </div>
+                                <div class="modal-order-total-container">
+                                    <div class="order-total">
+                                        <p>Subtotal: <span class="checkout-price">$<%= order.cart.totalPrice.toFixed(2) %></span></p>
+                                        <p>Tax: <span class="checkout-price">$<%= (order.cart.totalPrice * 0.05).toFixed(2) %></span></p>
+                                        <p style="margin-top: 10px;"><strong>Total: <span class="checkout-price">$<%= (order.cart.totalPrice * 1.05).toFixed(2) %><span></strong></p>
+                                    </div>
+                                </div>
+                                    <% if(order.instructions != ""){ %>
+                                        <div class="modal-order-total-container">
+                                            <div class="order-delivery-instructions">
+                                                <p><%= order.instructions %></p>
+                                            </div>
+                                        </div>
+                                    <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        <% } %>
+        <% }); %>
+        </div>
+    </div>
+<% } else { %>
+    <div class="col-sm-6 col-md-6 order-history-container">
+        <h2>You have not placed any orders</h2>
+    </div>
+<% } %>
 
 <% include ../partials/profile-footer %>
