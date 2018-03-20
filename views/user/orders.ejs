@@ -22,7 +22,7 @@
                         <%= moment(order.deliveryTime).format("ddd LLL") %>
                     </div>
                     <div class="order-history-id">
-                        <a href=""><%= order._id %></a>
+                        <a href="https://www.google.com/maps/?q=<%= order.lat %>, <%= order.lng %>" target="_blank"><%= order._id %></a>
                     </div>
                 </div>
             </div>
@@ -33,35 +33,21 @@
                         <div class="modal-body" style="padding: 0;">
                             <div class="modal-order-container" >
                                 <div class="customer-row">
-                                    <div class="customer-info">
-                                        <p><strong>Order Placed</strong></p>
+                                    <div class="order-history-item-left">
+                                        <div class="order-history-name">
+                                            <%= order.name %>
+                                        </div>
+                                        <div class="order-histroy-payment">
+                                            Delivered | <%= order.payment %>
+                                        </div>
                                     </div>
-                                    <div class="customer-info">
-                                        <p><strong>Customer Name</strong></p>
-                                    </div>
-                                    <div class="customer-info">
-                                        <p><strong>Customer Contact</strong></p>
-                                    </div>
-                                    <div class="customer-info">
-                                        <p><strong>Payment Method</strong></p>
-                                    </div>
-                                    <div class="customer-info">
-                                        <p><strong>Order Number</strong></p>
-                                    </div>
-                                    <div class="customer-info">
-                                        <p><%= moment(order.deliveryTime).format("ddd LLL") %></p>
-                                    </div>
-                                    <div class="customer-info">
-                                        <p><%= order.name %></p>
-                                    </div>
-                                    <div class="customer-info">
-                                        <p><%= order.phone %></p>
-                                    </div>
-                                    <div class="customer-info" style="text-transform: capitalize">
-                                        <p><%= order.payment %></p>
-                                    </div>
-                                    <div class="customer-info">
-                                        <p><%= order._id %></p>
+                                    <div class="order-history-item-right">
+                                        <div style="font-size: 16px;">
+                                            <%= moment(order.deliveryTime).format("ddd LLL") %>
+                                        </div>
+                                        <div class="order-history-id">
+                                            <a href="https://www.google.com/maps/?q=<%= order.lat %>, <%= order.lng %>" target="_blank"><%= order._id %></a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="modal-order-item-container">
