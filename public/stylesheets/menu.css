@@ -10,18 +10,28 @@
     background-size: cover;
 }
 
-.food-item {
-    border: 1px solid #c5c5c5;
-    padding: 10px 15px;
-    margin: 10px;
-    height: 150px;
-    background: white;
-    border-radius: 4px;
-}
-
 .navbar-fixed {
     top: 51px;
     z-index: 10;
+}
+
+.food-item {
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    margin: 10px;
+    height: 150px;
+    background: white;
+}
+
+.food-item-img{
+    border-radius: 0 4px 4px 0;
+     width: 148px;
+     height: 148px;
+     float: right;
+}
+
+.food-item-content{
+    margin: 20px 15px;
 }
 
 .modal-img{

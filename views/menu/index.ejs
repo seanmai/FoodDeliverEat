@@ -24,12 +24,15 @@
                         <% if(food.type == category){ %>
                             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="food-item" data-toggle="modal" data-target="#<%= food._id %>">
-                                        <!-- <div  class="text-right;" style="float: right;">
-                                        <img src="<%= food.image %>">
-                                    </div> -->
-                                    <h4><%= food.name %></h4>
-                                    <span style="color: #777777;"><p><%- food.description.length > 163 ? food.description.substring(0, 160) + "..." : food.description %></p></span>
-                                    <span style="position: absolute; bottom: 15px; font-weight: 500; font-size: 15px;"><p>$<%= food.price.toFixed(2) %></p></span>
+                                    <% if(food.image != "") { %>
+                                    <div class="food-item-img" style="background: url('<%= food.image %>'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+                                    </div>
+                                    <% } %>
+                                    <div class="food-item-content">
+                                        <h4><%= food.name %></h4>
+                                        <span style="color: #777777;"><p><%- food.description.length > 163 ? food.description.substring(0, 160) + "..." : food.description %></p></span>
+                                        <span style="position: absolute; bottom: 14px; font-weight: 500; font-size: 15px;"><p>$<%= food.price.toFixed(2) %></p></span>
+                                    </div>
                                 </div>
                             </div>
                         <% } %>
