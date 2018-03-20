@@ -34,7 +34,6 @@ router.post("/register", function(req, res){
     })
 });
 
-//Show login form
 router.get("/login", function(req, res){
     res.render("user/login", {page: "login", csrfToken: req.csrfToken()});  //page: orders for header navbar active
 });
@@ -54,9 +53,21 @@ router.get("/logout", function(req, res){
     res.redirect("/menu");
 });
 
+router.put("/:id", function(req, res){
+    User.findByIdAndUpdate(req.params.id, req.body.user, function(err, updatedUser){ // Uses req.body.user due to the way form data is set up
+        if(err){                                                                     // ie) user[firstName]
+            req.flash("error", err.message);
+            res.redirect("/:id/account");
+        } else {
+            req.flash("success", "Your account information has been changed succesfully.");
+            res.redirect("/:id/account");
+        }
+    })
+})
+
 //User Account
 router.get("/:id/account", function(req, res){
-    User.findById(req.params.id).exec(function(err, foundUser){ 
+    User.findById(req.params.id).exec(function(err, foundUser){
         if(err){
             req.flash("error", err.message);
             return res.redirect("/menu");
@@ -68,7 +79,7 @@ router.get("/:id/account", function(req, res){
 
 //User Payment
 router.get("/:id/payment-info", function(req, res){
-    User.findById(req.params.id).exec(function(err, foundUser){ 
+    User.findById(req.params.id).exec(function(err, foundUser){
         if(err){
             req.flash("error", err.message);
             return res.redirect("/menu");
