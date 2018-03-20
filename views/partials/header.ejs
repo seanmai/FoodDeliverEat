@@ -38,7 +38,7 @@
                                     <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/user/login">Sign In</a></li>
                                     <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/user/register">Sign Up</a></li>
                                 <% } else { %>
-                                    <li class="<%= typeof page !== 'undefined' && page === 'profile' || 'payment-info' || 'order-history' ? 'active' : '' %>"><a href="/user/<%= currentUser._id %>/account">Profile</a></li>
+                                    <li class="<%= typeof page !== 'undefined' && (page === 'profile' || page === 'payment-info' || page === 'order-history') ? 'active' : '' %>"><a href="/user/<%= currentUser._id %>/account">Profile</a></li>
                                     <li class="<%= typeof page !== 'undefined' && page === 'orders' ? 'active' : '' %>"><a href="/orders">View Orders</a></li>
                                     <li><a href="/user/logout">Sign Out</a></li>
                                 <% } %>
