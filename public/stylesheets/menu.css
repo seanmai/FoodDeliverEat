@@ -30,6 +30,12 @@
      float: right;
 }
 
+.food-item-description{
+    color: #777777;
+    max-height: 2.9em;
+    overflow: hidden;
+}
+
 .food-item-content{
     margin: 20px 15px;
 }

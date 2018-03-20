@@ -30,7 +30,9 @@
                                     <% } %>
                                     <div class="food-item-content">
                                         <h4><%= food.name %></h4>
-                                        <span style="color: #777777;"><p><%- food.description.length > 163 ? food.description.substring(0, 160) + "..." : food.description %></p></span>
+                                        <div class="food-item-description">
+                                            <p class=""><%= food.description %></p>
+                                        </div>
                                         <span style="position: absolute; bottom: 14px; font-weight: 500; font-size: 15px;"><p>$<%= food.price.toFixed(2) %></p></span>
                                     </div>
                                 </div>
@@ -48,7 +50,7 @@
                                   <div class="modal-text-content">
                                       <h1><%= food.name %></h1>
                                       <div class="modal-description"  style="padding: 0 25px; color: #777777;">
-                                          <p><%= food.description %></p>
+                                          <p class="multilineEllipseText"><%= food.description %></p>
                                       </div>
                                       <% if(food.radioInput[i] != []){ %>
                                           <div class="modal-radio">
