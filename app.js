@@ -59,6 +59,9 @@ app.use("/menu", menuRoutes);
 app.use("/orders", ordersRoutes);
 app.use("/user", userRoutes);
 app.use("/checkout", checkoutRoutes);
+app.all("*", function(req, res){            //Redirects all other routes that are not specified
+    res.redirect("http://www.google.com/");
+});
 
 
 app.listen(3000, function(){
