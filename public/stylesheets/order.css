@@ -43,6 +43,7 @@
 .order-button-container{
     display: inline-block;
     width: 29%;
+    float: right;
 }
 
 .order-button-container .btn{

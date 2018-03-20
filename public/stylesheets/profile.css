@@ -32,16 +32,11 @@
     margin-bottom: 20px;
 }
 
-/* Order Histroy */
-.order-history-container{
-    display: inline-block;
-    margin-top: 15px;
-    float: left; padding: 0;
-}
-.order-history-container h2{
-    margin-bottom: 20px;
+.account-form-container{
+    width: 50%;
 }
 
+/* Order Histroy */
 .order-history-item-container{
     padding: 0;
     border-top: 1px solid #cccccc;

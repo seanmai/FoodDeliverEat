@@ -1,7 +1,7 @@
 <% include ../partials/profile-header %> <!-- Row set up in profile-header -->
 
 <% if(user.orders[0] != null){ %>
-    <div class="col-sm-6 col-md-6 order-history-container">
+    <div class="col-sm-6 col-md-6 account-container">
         <h2>Order History</h2>
         <div class="col-md-9 order-history-item-container">
         <% user.orders.forEach(function(order){ %>
