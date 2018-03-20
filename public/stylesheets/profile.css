@@ -1,3 +1,4 @@
+/* Profile Header */
 .nav-pills .active{
     width: 105%;
 }
@@ -19,4 +20,30 @@
 
 .nav-pills li h2{
     padding: 0 30px;
+}
+
+
+/* Order Histroy */
+.order-history-container{
+    display: inline-block;
+    margin-top: 15px;
+    float: left; padding: 0;
+}
+.order-history-container h2{
+    margin-bottom: 20px;
+}
+
+.order-history-item-container{
+    padding: 0;
+    border-top: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+}
+
+.order-history-item{
+    display: block;
+    float: left;
+    border-bottom: 1px solid #cccccc;
+    width: 100%;
+    padding: 0 7px;
 }

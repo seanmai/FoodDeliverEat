@@ -56,7 +56,7 @@ router.get("/logout", function(req, res){
 
 //User Account
 router.get("/:id/account", function(req, res){
-    User.findById(req.params.id).exec(function(err, foundUser){  // Must use populate method to populate orders from objectID
+    User.findById(req.params.id).exec(function(err, foundUser){ 
         if(err){
             req.flash("error", err.message);
             return res.redirect("/menu");
@@ -68,7 +68,7 @@ router.get("/:id/account", function(req, res){
 
 //User Payment
 router.get("/:id/payment-info", function(req, res){
-    User.findById(req.params.id).exec(function(err, foundUser){  // Must use populate method to populate orders from objectID
+    User.findById(req.params.id).exec(function(err, foundUser){ 
         if(err){
             req.flash("error", err.message);
             return res.redirect("/menu");
