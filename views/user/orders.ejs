@@ -7,16 +7,19 @@
                 <div class="col-md-9 order-history-item-container">
                 <% user.orders.forEach(function(order){ %>
                         <div class="order-history-item">
-                            <div class="" style="width: 25%; display: inline-block;">
-                                <div class="" style="display: block;">
+                            <div class="order-history-item-left">
+                                <div class="order-history-name">
                                     <%= order.name %>
                                 </div>
-                                <div class="" style="display: block; text-transform: capitalize;">
+                                <div class="order-histroy-payment">
                                     $<%= (order.cart.totalPrice * 1.05).toFixed(2) %> | <%= order.payment %>
                                 </div>
                             </div>
-                            <div class="" style="width: 25%; display: inline-block; float: right; background: pink;">
-
+                            <div class="order-history-button">
+                                <a href="" target="_blank" class="btn btn-primary">Order Details</a>
+                            </div>
+                            <div class="order-history-item-right">
+                                <p>Hello</p>
                             </div>
                         </div>
                 <% }); %>
