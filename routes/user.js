@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require("passport");
 var csrf = require("csurf");
 var User = require("../models/user");
+var middleware = require("../middleware");
 
 var csrfProtection = csrf();
 router.use(csrfProtection);
@@ -53,6 +54,7 @@ router.get("/logout", function(req, res){
     res.redirect("/menu");
 });
 
+//Update route
 router.put("/:id", function(req, res){
     User.findByIdAndUpdate(req.params.id, req.body.user, function(err, updatedUser){ // Uses req.body.user due to the way form data is set up
         if(err){                                                                     // ie) user[firstName]
@@ -66,7 +68,7 @@ router.put("/:id", function(req, res){
 })
 
 //User Account
-router.get("/:id/account", function(req, res){
+router.get("/:id/account", middleware.checkAccountOwnership, function(req, res){
     User.findById(req.params.id).exec(function(err, foundUser){
         if(err){
             req.flash("error", err.message);
@@ -78,7 +80,7 @@ router.get("/:id/account", function(req, res){
 });
 
 //User Payment
-router.get("/:id/payment-info", function(req, res){
+router.get("/:id/payment-info", middleware.checkAccountOwnership, function(req, res){
     User.findById(req.params.id).exec(function(err, foundUser){
         if(err){
             req.flash("error", err.message);
@@ -90,7 +92,7 @@ router.get("/:id/payment-info", function(req, res){
 });
 
 //User Order History
-router.get("/:id/order-history", function(req, res){
+router.get("/:id/order-history", middleware.checkAccountOwnership, function(req, res){
     User.findById(req.params.id).populate("orders").exec(function(err, foundUser){  // Must use populate method to populate orders from objectID
         if(err){
             req.flash("error", err.message);

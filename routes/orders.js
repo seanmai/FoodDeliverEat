@@ -5,7 +5,7 @@ var Cart = require("../models/cart");
 var Order = require("../models/order");
 var middleware = require("../middleware");
 
-router.get("/", function(req, res){
+router.get("/", middleware.isLoggedIn, function(req, res){
     Order.find({}, function(err, orders){
         if(err){
             console.log(err)
