@@ -28,6 +28,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
 app.locals.moment = require("moment");
+app.locals.pluralize = require("pluralize");
 // seedDB();
 
 app.use(cookieParser());
