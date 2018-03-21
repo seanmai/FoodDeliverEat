@@ -21,6 +21,13 @@
     margin: 10px;
     height: 150px;
     background: white;
+    transition: 0.35s ease;
+}
+
+.food-item:hover {
+    cursor: pointer;
+    transition: 0.35s ease;
+    opacity: 0.65;
 }
 
 .food-item-img{
