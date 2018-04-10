@@ -1,5 +1,5 @@
 var express        = require("express"),
-    socket         = require("socket.io"),
+    // socket         = require("socket.io"),
     cookieParser   = require("cookie-parser"),
     session        = require("express-session"),
     app            = express(),
