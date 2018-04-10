@@ -31,7 +31,7 @@ app.use(methodOverride("_method"));
 app.use(flash());
 app.locals.moment = require("moment");
 app.locals.pluralize = require("pluralize");
-seedDB();
+// seedDB();
 
 app.use(cookieParser());
 app.use(require("express-session")({

@@ -17,6 +17,26 @@
     display: inline-block;
 }
 
+.order-date{
+    width: 24%;
+}
+
+.customer-name{
+    width: 16%;
+}
+
+.customer-phone{
+    width: 16%;
+}
+
+.order-payment{
+    width: 16%;
+}
+
+.order-number{
+    width: 24:;
+}
+
 .order-item-container{
     display: inline-block;
     margin: 10px 12px;
