@@ -71,7 +71,7 @@ var server = app.listen(3000, function(){
 });
 var io = socket(server);
 io.on("connection", function(socket){
-    let order = db.collections("orders");
+    // let order = db.collections("orders");
     console.log("Made socket connection", socket.id);
 
     //Sends Status (Probably don't need)
