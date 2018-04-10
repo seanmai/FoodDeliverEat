@@ -1,4 +1,5 @@
 var express = require("express");
+var app = require('../app');
 var router = express.Router();
 var Food = require("../models/food");
 var Cart = require("../models/cart");
@@ -92,6 +93,8 @@ router.post("/", function(req, res){
             req.user.orders.push(order);
             req.user.save();
         }
+        var io = req.app.get("socketio"); // Retrieves app.set("socketio", io)
+        io.sockets.emit("order", order);  // Emits data recieved to all open sockets on "order"
         // console.log(order);
         req.session.cart = {};
         req.flash("success", "Sit tight, your order is on the way!");

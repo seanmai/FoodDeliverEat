@@ -70,17 +70,13 @@ var server = app.listen(3000, function(){
     console.log("FoodDeliverEat is listening on PORT3000.");
 });
 var io = socket(server);
+app.set("socketio", io); // Stores io in app object to be accessed in req.app and res.app objects
+
 io.on("connection", function(socket){
-    // let order = db.collections("orders");
     console.log("Made socket connection", socket.id);
 
-    //Sends Status (Probably don't need)
-    sendStatus = function(s){
-        socket.emit("status", s);
-    }
-
-    socket.on("order", function(data){
-        io.sockets.emit("order", data);
-    });
-
+    // socket.on("order", function(data){
+    //     console.log("Order passed into socket");
+    //     io.sockets.emit("order", data);
+    // });
 });
