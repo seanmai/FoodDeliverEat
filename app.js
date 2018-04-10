@@ -1,4 +1,5 @@
 var express        = require("express"),
+    socket         = require("socket.io"),
     cookieParser   = require("cookie-parser"),
     session        = require("express-session"),
     app            = express(),
@@ -65,6 +66,21 @@ app.all("*", function(req, res){            //Redirects all other routes that ar
 });
 
 
-app.listen(3000, function(){
+var server = app.listen(3000, function(){
     console.log("FoodDeliverEat is listening on PORT3000.");
+});
+var io = socket(server);
+io.on("connection", function(socket){
+    let order = db.collections("orders");
+    console.log("Made socket connection", socket.id);
+
+    //Sends Status (Probably don't need)
+    sendStatus = function(s){
+        socket.emit("status", s);
+    }
+
+    socket.on("order", function(data){
+        io.sockets.emit("order", data);
+    });
+
 });
