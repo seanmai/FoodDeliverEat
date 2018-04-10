@@ -63,7 +63,7 @@ app.use("/orders", ordersRoutes);
 app.use("/user", userRoutes);
 app.use("/checkout", checkoutRoutes);
 app.all("*", function(req, res){            //Redirects all other routes that are not specified
-    res.redirect("http://www.google.com/");
+    res.redirect("http://www.loceats.ca/menu");
 });
 
 var port = process.env.PORT || 3000;
