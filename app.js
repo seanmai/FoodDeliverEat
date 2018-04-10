@@ -21,7 +21,8 @@ var indexRoutes = require("./routes/index"),
     userRoutes = require("./routes/user"),
     checkoutRoutes = require("./routes/checkout");
 
-mongoose.connect("mongodb://localhost/fooddelivereat", {useMongoClient: true});
+//DATABASEURL exported on local machine and set as env var for heroku
+mongoose.connect(process.env.DATABASEURL, {useMongoClient: true});
 mongoose.Promise = global.Promise;
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
