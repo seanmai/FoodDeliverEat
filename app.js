@@ -71,6 +71,8 @@ var server = app.listen(port, function(){
     console.log("locEATS is listening on PORT" + port);
 });
 var io = socket(server);
+io.set('heartbeat timeout', 4000);
+io.set('heartbeat interval', 2000);
 app.set("socketio", io); // Stores io in app object to be accessed in req.app and res.app objects
 
 // io.on("connection", function(socket){
