@@ -70,8 +70,8 @@ var port = process.env.PORT || 3000;
 var server = app.listen(port, function(){
     console.log("locEATS is listening on PORT" + port);
 });
-var io = socket(server);
-app.set("socketio", io); // Stores io in app object to be accessed in req.app and res.app objects
+// var io = socket(server);
+// app.set("socketio", io); // Stores io in app object to be accessed in req.app and res.app objects
 
 // io.on("connection", function(socket){
     // console.log("Made socket connection", socket.id);
