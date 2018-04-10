@@ -65,15 +65,15 @@ app.all("*", function(req, res){            //Redirects all other routes that ar
     res.redirect("http://www.google.com/");
 });
 
-
-var server = app.listen(3000, function(){
-    console.log("FoodDeliverEat is listening on PORT3000.");
+var port = process.env.PORT || 3000;
+var server = app.listen(port, function(){
+    console.log("locEATS is listening on PORT" + port);
 });
 var io = socket(server);
 app.set("socketio", io); // Stores io in app object to be accessed in req.app and res.app objects
 
 io.on("connection", function(socket){
-    console.log("Made socket connection", socket.id);
+    // console.log("Made socket connection", socket.id);
 
     // socket.on("order", function(data){
     //     console.log("Order passed into socket");

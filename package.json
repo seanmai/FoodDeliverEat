@@ -1,21 +1,22 @@
 {
-  "name": "fooddelivereat",
+  "name": "locEATS",
   "version": "1.0.0",
   "description": "Food delivering web app",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/seanmai/FoodDeliverEat.git"
+    "url": "git+https://github.com/seanmai/locEATS.git"
   },
   "author": "Sean Mai",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/seanmai/FoodDeliverEat/issues"
+    "url": "https://github.com/seanmai/locEATS/issues"
   },
-  "homepage": "https://github.com/seanmai/FoodDeliverEat#readme",
+  "homepage": "https://github.com/seanmai/locEATS#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "connect-flash": "^0.1.1",
