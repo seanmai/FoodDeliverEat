@@ -1,5 +1,5 @@
 var express        = require("express"),
-    // socket         = require("socket.io"),
+    socket         = require("socket.io"),
     cookieParser   = require("cookie-parser"),
     session        = require("express-session"),
     app            = express(),
@@ -22,7 +22,7 @@ var indexRoutes = require("./routes/index"),
     checkoutRoutes = require("./routes/checkout");
 
 //DATABASEURL exported on local machine and set as env var for heroku
-mongoose.connect("mongodb://<seanmai>:<SeanMai6237>@ds241039.mlab.com:41039/loceats", {useMongoClient: true});
+mongoose.connect(process.env.DATABASEURL, {useMongoClient: true});
 mongoose.Promise = global.Promise;
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -31,7 +31,7 @@ app.use(methodOverride("_method"));
 app.use(flash());
 app.locals.moment = require("moment");
 app.locals.pluralize = require("pluralize");
-seedDB();
+// seedDB();
 
 app.use(cookieParser());
 app.use(require("express-session")({
@@ -70,8 +70,10 @@ var port = process.env.PORT || 3000;
 var server = app.listen(port, function(){
     console.log("locEATS is listening on PORT" + port);
 });
-// var io = socket(server);
-// app.set("socketio", io); // Stores io in app object to be accessed in req.app and res.app objects
+var io = socket(server);
+io.set('heartbeat timeout', 4000);
+io.set('heartbeat interval', 2000);
+app.set("socketio", io); // Stores io in app object to be accessed in req.app and res.app objects
 
 // io.on("connection", function(socket){
     // console.log("Made socket connection", socket.id);
