@@ -3,7 +3,7 @@
 <% if(orders[0] != null){ %>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <% orders.forEach(function(order){ %>
+            <% for(var i = orders.length-1; i >= 0; i--){ %>
                 <div class="order-container">
                     <div class="customer-row">
                         <div class="customer-info col-md-3">
@@ -22,58 +22,58 @@
                             <p><strong>Order Number</strong></p>
                         </div>
                         <div class="customer-info col-md-3">
-                            <p><%= moment(order.deliveryTime).format("ddd LLL") %></p>
+                            <p><%= moment(orders[i].deliveryTime).format("ddd LLL") %></p>
                         </div>
                         <div class="customer-info col-md-2">
-                            <p><%= order.name %></p>
+                            <p><%= orders[i].name %></p>
                         </div>
                         <div class="customer-info col-md-2">
-                            <p><%= order.phone %></p>
+                            <p><%= orders[i].phone %></p>
                         </div>
                         <div class="customer-info col-md-2" style="text-transform: capitalize">
-                            <p><%= order.payment %></p>
+                            <p><%= orders[i].payment %></p>
                         </div>
                         <div class="customer-info col-md-3">
-                            <p><%= order._id %></p>
+                            <p><%= orders[i]._id %></p>
                         </div>
                     </div>
                     <div class="order-item-container">
-                        <% for(var id in order.cart.items){ %>
+                        <% for(var id in orders[i].cart.items){ %>
                             <div class="order-item-row">
                                 <div class="order-item">
-                                    <p><strong><%= order.cart.items[id].qty %> - </strong></p>
+                                    <p><strong><%= orders[i].cart.items[id].qty %> - </strong></p>
                                 </div>
                                 <div class="order-item">
-                                    <p><strong><%= order.cart.items[id].item.name %></strong></p>
+                                    <p><strong><%= orders[i].cart.items[id].item.name %></strong></p>
                                 </div>
                                 <div class="order-item order-item-price">
-                                    <p>$<%= (order.cart.items[id].price * order.cart.items[id].qty).toFixed(2) %></p>
+                                    <p>$<%= (orders[i].cart.items[id].price * orders[i].cart.items[id].qty).toFixed(2) %></p>
                                 </div>
                             </div>
                         <% } %>
                     </div>
                     <div class="order-button-container">
-                        <a href="https://www.google.com/maps/?q=<%= order.lat %>, <%= order.lng %>" target="_blank" class="btn btn-primary">Deliver Order</a>
-                        <form class="delete-form" action="/orders/<%= order._id %>?_method=DELETE" method="POST">
+                        <a href="https://www.google.com/maps/?q=<%= orders[i].lat %>, <%= orders[i].lng %>" target="_blank" class="btn btn-primary">Deliver Order</a>
+                        <form class="delete-form" action="/orders/<%= orders[i]._id %>?_method=DELETE" method="POST">
                             <button class="btn btn-default">Cancel Order</button>
                         </form>
                     </div>
                     <div class="order-total-container">
                         <div class="order-total">
-                            <p>Subtotal: <span class="checkout-price">$<%= order.cart.totalPrice.toFixed(2) %></span></p>
-                            <p>Tax: <span class="checkout-price">$<%= (order.cart.totalPrice * 0.05).toFixed(2) %></span></p>
-                            <p style="margin-top: 10px;"><strong>Total: <span class="checkout-price">$<%= (order.cart.totalPrice * 1.05).toFixed(2) %><span></strong></p>
+                            <p>Subtotal: <span class="checkout-price">$<%= orders[i].cart.totalPrice.toFixed(2) %></span></p>
+                            <p>Tax: <span class="checkout-price">$<%= (orders[i].cart.totalPrice * 0.05).toFixed(2) %></span></p>
+                            <p style="margin-top: 10px;"><strong>Total: <span class="checkout-price">$<%= (orders[i].cart.totalPrice * 1.05).toFixed(2) %><span></strong></p>
                         </div>
                     </div>
-                    <% if(order.instructions != ""){ %>
+                    <% if(orders[i].instructions != ""){ %>
                         <div class="order-total-container">
                             <div class="order-delivery-instructions">
-                                <p><%= order.instructions %></p>
+                                <p><%= orders[i].instructions %></p>
                             </div>
                         </div>
                     <% } %>
                 </div>
-            <% }); %>
+            <% } %>
         </div>
     </div>
 <% } else { %>

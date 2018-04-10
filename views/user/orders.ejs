@@ -4,30 +4,30 @@
     <div class="col-sm-6 col-md-6 account-container">
         <h2>Order History</h2>
         <div class="col-md-9 order-history-item-container">
-        <% user.orders.forEach(function(order){ %>
+        <% for(var i = user.orders.length-1; i >= 0; i--){ %>
             <div class="order-history-item">
                 <div class="order-history-item-left">
                     <div class="order-history-name">
-                        <%= order.name %>
+                        <%= user.orders[i].name %>
                     </div>
                     <div class="order-histroy-payment">
-                        $<%= (order.cart.totalPrice * 1.05).toFixed(2) %> | <%= order.payment %>
+                        $<%= (user.orders[i].cart.totalPrice * 1.05).toFixed(2) %> | <%= user.orders[i].payment %>
                     </div>
                 </div>
                 <div class="order-history-button">
-                    <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#<%= order._id %>">Order Details</button>
+                    <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#<%= user.orders[i]._id %>">Order Details</button>
                 </div>
                 <div class="order-history-item-right">
                     <div class="order-history-date">
-                        <%= moment(order.deliveryTime).format("ddd LLL") %>
+                        <%= moment(user.orders[i].deliveryTime).format("ddd LLL") %>
                     </div>
                     <div class="order-history-id">
-                        <a href="https://www.google.com/maps/?q=<%= order.lat %>, <%= order.lng %>" target="_blank"><%= order._id %></a>
+                        <a href="https://www.google.com/maps/?q=<%= user.orders[i].lat %>, <%= user.orders[i].lng %>" target="_blank"><%= user.orders[i]._id %></a>
                     </div>
                 </div>
             </div>
             <!-- Modal -->
-            <div id="<%= order._id %>" class="modal fade" role="dialog">
+            <div id="<%= user.orders[i]._id %>" class="modal fade" role="dialog">
                 <div class="modal-dialog ">
                     <div class="modal-content">
                         <div class="modal-body" style="padding: 0;">
@@ -35,47 +35,47 @@
                                 <div class="customer-row">
                                     <div class="order-history-item-left">
                                         <div class="order-history-name">
-                                            <%= order.name %>
+                                            <%= user.orders[i].name %>
                                         </div>
                                         <div class="order-histroy-payment">
-                                            Delivered | <%= order.payment %>
+                                            Delivered | <%= user.orders[i].payment %>
                                         </div>
                                     </div>
                                     <div class="order-history-item-right">
                                         <div style="font-size: 16px;">
-                                            <%= moment(order.deliveryTime).format("ddd LLL") %>
+                                            <%= moment(user.orders[i].deliveryTime).format("ddd LLL") %>
                                         </div>
                                         <div class="order-history-id">
-                                            <a href="https://www.google.com/maps/?q=<%= order.lat %>, <%= order.lng %>" target="_blank"><%= order._id %></a>
+                                            <a href="https://www.google.com/maps/?q=<%= user.orders[i].lat %>, <%= user.orders[i].lng %>" target="_blank"><%= user.orders[i]._id %></a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-order-item-container">
-                                    <% for(var id in order.cart.items){ %>
+                                    <% for(var id in user.orders[i].cart.items){ %>
                                         <div class="order-item-row">
                                             <div class="order-item">
-                                                <p><strong><%= order.cart.items[id].qty %> - </strong></p>
+                                                <p><strong><%= user.orders[i].cart.items[id].qty %> - </strong></p>
                                             </div>
                                             <div class="order-item">
-                                                <p><strong><%= order.cart.items[id].item.name %></strong></p>
+                                                <p><strong><%= user.orders[i].cart.items[id].item.name %></strong></p>
                                             </div>
                                             <div class="order-item order-item-price">
-                                                <p>$<%= (order.cart.items[id].price * order.cart.items[id].qty).toFixed(2) %></p>
+                                                <p>$<%= (user.orders[i].cart.items[id].price * user.orders[i].cart.items[id].qty).toFixed(2) %></p>
                                             </div>
                                         </div>
                                     <% } %>
                                 </div>
                                 <div class="modal-order-total-container">
                                     <div class="order-total">
-                                        <p>Subtotal: <span class="checkout-price">$<%= order.cart.totalPrice.toFixed(2) %></span></p>
-                                        <p>Tax: <span class="checkout-price">$<%= (order.cart.totalPrice * 0.05).toFixed(2) %></span></p>
-                                        <p style="margin-top: 10px;"><strong>Total: <span class="checkout-price">$<%= (order.cart.totalPrice * 1.05).toFixed(2) %><span></strong></p>
+                                        <p>Subtotal: <span class="checkout-price">$<%= user.orders[i].cart.totalPrice.toFixed(2) %></span></p>
+                                        <p>Tax: <span class="checkout-price">$<%= (user.orders[i].cart.totalPrice * 0.05).toFixed(2) %></span></p>
+                                        <p style="margin-top: 10px;"><strong>Total: <span class="checkout-price">$<%= (user.orders[i].cart.totalPrice * 1.05).toFixed(2) %><span></strong></p>
                                     </div>
                                 </div>
-                                    <% if(order.instructions != ""){ %>
+                                    <% if(user.orders[i].instructions != ""){ %>
                                         <div class="modal-order-total-container">
                                             <div class="order-delivery-instructions">
-                                                <p><%= order.instructions %></p>
+                                                <p><%= user.orders[i].instructions %></p>
                                             </div>
                                         </div>
                                     <% } %>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
             </div>
-        <% }); %>
+        <% } %>
         </div>
     </div>
 <% } else { %>
