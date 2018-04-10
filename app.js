@@ -73,11 +73,11 @@ var server = app.listen(port, function(){
 var io = socket(server);
 app.set("socketio", io); // Stores io in app object to be accessed in req.app and res.app objects
 
-io.on("connection", function(socket){
+// io.on("connection", function(socket){
     // console.log("Made socket connection", socket.id);
 
     // socket.on("order", function(data){
     //     console.log("Order passed into socket");
     //     io.sockets.emit("order", data);
     // });
-});
+// });
