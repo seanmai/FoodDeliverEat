@@ -83,18 +83,19 @@
 <script>
     nav = navigator.geolocation;
     nav.getCurrentPosition(success, failure);
-
     function success(position){
         var lat = position.coords.latitude;
         var lng = position.coords.longitude;
         $("#lat").val(lat);
         $("#lng").val(lng);
-        // alert(lat);
-        // alert(lng);
+        alert(lat);
+        alert(lng);
     }
 
     function failure(){
         alert("Could not get location.");
     }
 </script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlyZea0ustHOTolVtfBRODE4FzTJ1Q7QU&callback=initMap"
+type="text/javascript"></script>
 <% include ../partials/footer %>
